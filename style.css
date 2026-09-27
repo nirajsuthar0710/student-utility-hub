@@ -345,4 +345,84 @@ footer p {
     .notes {
         padding: 22px;
     }
+/* =========================
+   STEP 21 - FINAL POLISH
+========================= */
+
+.calculator,
+.planner,
+.timer,
+.notes {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.calculator:hover,
+.planner:hover,
+.timer:hover,
+.notes:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+}
+
+button {
+    transition: all 0.2s ease;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+input,
+textarea {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+#result,
+#gradeResult,
+#cgpaResult,
+#countdownResult,
+#noteStatus {
+    margin-top: 14px;
+    font-weight: bold;
+}
+
+#planList {
+    margin-top: 15px;
+}
+
+#planList p,
+#planList div {
+    background: #eff6ff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+@media (max-width: 500px) {
+
+    .hero h2 {
+        font-size: 30px;
+    }
+
+    .hero {
+        min-height: 330px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #time {
+        font-size: 40px;
+    }
 }
