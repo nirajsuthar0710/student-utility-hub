@@ -75,3 +75,49 @@ function saveNote() {
 }
 
 updateTimer();
+function calculateGrade() {
+    let marks = Number(document.getElementById("gradeMarks").value);
+
+    if (marks < 0 || marks > 100 || isNaN(marks)) {
+        document.getElementById("gradeResult").innerText =
+            "Please enter percentage between 0 and 100.";
+        return;
+    }
+
+    let grade;
+
+    if (marks >= 90) {
+        grade = "A+";
+    } else if (marks >= 80) {
+        grade = "A";
+    } else if (marks >= 70) {
+        grade = "B";
+    } else if (marks >= 60) {
+        grade = "C";
+    } else if (marks >= 50) {
+        grade = "D";
+    } else {
+        grade = "Needs Improvement";
+    }
+
+    document.getElementById("gradeResult").innerText =
+        "Your Grade: " + grade;
+}
+function addPlan() {
+    let subject = document.getElementById("subject").value;
+    let hours = document.getElementById("hours").value;
+
+    if (subject.trim() === "" || hours === "") {
+        alert("Please enter subject and study hours.");
+        return;
+    }
+
+    let plan = document.createElement("p");
+
+    plan.innerText = "📖 " + subject + " — " + hours + " hours";
+
+    document.getElementById("planList").appendChild(plan);
+
+    document.getElementById("subject").value = "";
+    document.getElementById("hours").value = "";
+}
