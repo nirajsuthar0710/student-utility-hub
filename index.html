@@ -4,7 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Utility Hub</title>
+
+    <title>
+<meta name="description"
+      content="Student Utility Hub - Free calculators, study timer, notes, planner and exam countdown tools for students.">Student Utility Hub</title>
+
+    <meta name="description"
+        content="Student Utility Hub - Free calculators, study timer, notes, planner and exam countdown tools for students.">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,14 +27,21 @@
     </nav>
 </header>
 
+
 <main>
 
-    <section class="hero" id="home">        <h2>Study Smarter 🚀</h2>
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <h2>Study Smarter 🚀</h2>
         <p>Useful tools made specially for students.</p>
+
         <button onclick="showMessage()">Explore Tools</button>
     </section>
 
-    <section class="tools" id="tools">        <h2>Our Tools</h2>
+
+    <!-- TOOLS -->
+    <section class="tools" id="tools">
+        <h2>Our Tools</h2>
 
         <div class="tool-container">
 
@@ -52,28 +66,10 @@
         </div>
     </section>
 
+
+    <!-- PERCENTAGE CALCULATOR -->
     <section class="calculator">
         <h2>🧮 Percentage Calculator</h2>
-<section class="calculator">
-    <h2>🎯 Grade Calculator</h2>
-<section class="planner">
-    <h2>📚 Study Planner</h2>
-
-    <input type="text" id="subject" placeholder="Enter Subject">
-
-    <input type="number" id="hours" placeholder="Study Hours">
-
-    <button onclick="addPlan()">Add Plan</button>
-
-    <div id="planList"></div>
-</section>
-
-    <input type="number" id="gradeMarks" placeholder="Enter Percentage">
-
-    <button onclick="calculateGrade()">Check Grade</button>
-
-    <h3 id="gradeResult"></h3>
-</section>
 
         <input type="number" id="obtained" placeholder="Marks Obtained">
 
@@ -84,6 +80,58 @@
         <h3 id="result"></h3>
     </section>
 
+
+    <!-- GRADE CALCULATOR -->
+    <section class="calculator">
+        <h2>🎯 Grade Calculator</h2>
+
+        <input type="number" id="gradeMarks" placeholder="Enter Percentage">
+
+        <button onclick="calculateGrade()">Check Grade</button>
+
+        <h3 id="gradeResult"></h3>
+    </section>
+
+
+    <!-- CGPA CALCULATOR -->
+    <section class="calculator">
+        <h2>🎓 CGPA Calculator</h2>
+
+        <input type="number" id="cgpa" step="0.01" placeholder="Enter CGPA">
+
+        <button onclick="calculateCGPA()">Calculate Percentage</button>
+
+        <h3 id="cgpaResult"></h3>
+    </section>
+
+
+    <!-- EXAM COUNTDOWN -->
+    <section class="calculator">
+        <h2>📅 Exam Countdown</h2>
+
+        <input type="date" id="examDate">
+
+        <button onclick="calculateCountdown()">Check Days Left</button>
+
+        <h3 id="countdownResult"></h3>
+    </section>
+
+
+    <!-- STUDY PLANNER -->
+    <section class="planner">
+        <h2>📚 Study Planner</h2>
+
+        <input type="text" id="subject" placeholder="Enter Subject">
+
+        <input type="number" id="hours" placeholder="Study Hours">
+
+        <button onclick="addPlan()">Add Plan</button>
+
+        <div id="planList"></div>
+    </section>
+
+
+    <!-- STUDY TIMER -->
     <section class="timer">
         <h2>⏱️ Study Timer</h2>
 
@@ -94,10 +142,13 @@
         <button onclick="resetTimer()">Reset</button>
     </section>
 
+
+    <!-- QUICK NOTES -->
     <section class="notes" id="notes">
         <h2>📝 Quick Notes</h2>
 
-        <textarea id="noteText" placeholder="Write your notes..."></textarea>
+        <textarea id="noteText"
+            placeholder="Write your notes..."></textarea>
 
         <button onclick="saveNote()">Save Note</button>
 
@@ -106,9 +157,12 @@
 
 </main>
 
+
 <footer>
     <p>© 2026 Student Utility Hub</p>
+    <p>Made for Students 📚 | Study Smarter 🚀</p>
 </footer>
+
 
 <script src="script.js"></script>
 
