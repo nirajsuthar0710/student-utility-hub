@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-<meta name="description"
-      content="Student Utility Hub - Free calculators, study timer, notes, planner and exam countdown tools for students.">Student Utility Hub</title>
+    <title>Student Utility Hub</title>
 
     <meta name="description"
         content="Student Utility Hub - Free calculators, study timer, notes, planner and exam countdown tools for students.">
@@ -18,7 +16,13 @@
 <body>
 
 <header>
-    <h1>Student Utility Hub</h1>
+    <div class="brand">
+        <div class="brand-icon">🎓</div>
+        <div>
+            <h1>Student<span>Utility</span></h1>
+            <p>Plan • Learn • Grow</p>
+        </div>
+    </div>
 
     <nav>
         <a href="#home">Home</a>
@@ -32,43 +36,105 @@
 
     <!-- HERO -->
     <section class="hero" id="home">
-        <h2>Study Smarter 🚀</h2>
-        <p>Useful tools made specially for students.</p>
 
-        <button onclick="showMessage()">Explore Tools</button>
+        <div class="hero-content">
+            <p class="badge">📚 Your Study Partner</p>
+
+            <h2>Study Smarter,<br>Not Harder 🚀</h2>
+
+            <p>
+                All the essential tools you need for better
+                study, planning and productivity — in one place.
+            </p>
+
+            <a href="#tools" class="hero-button">
+                Explore Tools →
+            </a>
+        </div>
+
+        <div class="hero-visual">
+            📚
+            <span>✏️</span>
+            <span>📝</span>
+        </div>
+
     </section>
 
 
     <!-- TOOLS -->
     <section class="tools" id="tools">
-        <h2>Our Tools</h2>
+
+        <h2>Our Study Tools</h2>
+
+        <p class="section-subtitle">
+            Everything you need to calculate, plan and stay productive.
+        </p>
 
         <div class="tool-container">
 
             <div class="tool-card">
-                <h3>🧮 Percentage Calculator</h3>
-                <p>Calculate your percentage easily.</p>
-                <button>Open Tool</button>
+                <div class="tool-icon">%</div>
+                <h3>Percentage Calculator</h3>
+                <p>Calculate your percentage easily and quickly.</p>
+                <a href="#percentage">Open →</a>
             </div>
 
-            <div class="tool-card">
-                <h3>⏱️ Study Timer</h3>
-                <p>Focus on your studies with a timer.</p>
-                <button>Open Tool</button>
-            </div>
 
             <div class="tool-card">
-                <h3>📝 Quick Notes</h3>
-                <p>Keep your important study notes.</p>
-                <button>Open Tool</button>
+                <div class="tool-icon">🎯</div>
+                <h3>Grade Calculator</h3>
+                <p>Find your grade based on your percentage.</p>
+                <a href="#grade">Open →</a>
+            </div>
+
+
+            <div class="tool-card">
+                <div class="tool-icon">🎓</div>
+                <h3>CGPA Calculator</h3>
+                <p>Convert your CGPA into percentage easily.</p>
+                <a href="#cgpa">Open →</a>
+            </div>
+
+
+            <div class="tool-card">
+                <div class="tool-icon">📅</div>
+                <h3>Exam Countdown</h3>
+                <p>Track your exam date and stay prepared.</p>
+                <a href="#countdown">Open →</a>
+            </div>
+
+
+            <div class="tool-card">
+                <div class="tool-icon">📚</div>
+                <h3>Study Planner</h3>
+                <p>Plan your study schedule and stay on track.</p>
+                <a href="#planner">Open →</a>
+            </div>
+
+
+            <div class="tool-card">
+                <div class="tool-icon">⏱️</div>
+                <h3>Study Timer</h3>
+                <p>Focus better with a simple study timer.</p>
+                <a href="#timer">Open →</a>
+            </div>
+
+
+            <div class="tool-card">
+                <div class="tool-icon">📝</div>
+                <h3>Quick Notes</h3>
+                <p>Write and save your important study notes.</p>
+                <a href="#notes">Open →</a>
             </div>
 
         </div>
+
     </section>
 
 
-    <!-- PERCENTAGE CALCULATOR -->
-    <section class="calculator">
+    <!-- PERCENTAGE -->
+    <section class="calculator" id="percentage">
+
         <h2>🧮 Percentage Calculator</h2>
 
         <input type="number" id="obtained" placeholder="Marks Obtained">
@@ -78,11 +144,13 @@
         <button onclick="calculatePercentage()">Calculate</button>
 
         <h3 id="result"></h3>
+
     </section>
 
 
-    <!-- GRADE CALCULATOR -->
-    <section class="calculator">
+    <!-- GRADE -->
+    <section class="calculator" id="grade">
+
         <h2>🎯 Grade Calculator</h2>
 
         <input type="number" id="gradeMarks" placeholder="Enter Percentage">
@@ -90,11 +158,13 @@
         <button onclick="calculateGrade()">Check Grade</button>
 
         <h3 id="gradeResult"></h3>
+
     </section>
 
 
-    <!-- CGPA CALCULATOR -->
-    <section class="calculator">
+    <!-- CGPA -->
+    <section class="calculator" id="cgpa">
+
         <h2>🎓 CGPA Calculator</h2>
 
         <input type="number" id="cgpa" step="0.01" placeholder="Enter CGPA">
@@ -102,11 +172,13 @@
         <button onclick="calculateCGPA()">Calculate Percentage</button>
 
         <h3 id="cgpaResult"></h3>
+
     </section>
 
 
-    <!-- EXAM COUNTDOWN -->
-    <section class="calculator">
+    <!-- COUNTDOWN -->
+    <section class="calculator" id="countdown">
+
         <h2>📅 Exam Countdown</h2>
 
         <input type="date" id="examDate">
@@ -114,11 +186,13 @@
         <button onclick="calculateCountdown()">Check Days Left</button>
 
         <h3 id="countdownResult"></h3>
+
     </section>
 
 
-    <!-- STUDY PLANNER -->
-    <section class="planner">
+    <!-- PLANNER -->
+    <section class="planner" id="planner">
+
         <h2>📚 Study Planner</h2>
 
         <input type="text" id="subject" placeholder="Enter Subject">
@@ -128,11 +202,13 @@
         <button onclick="addPlan()">Add Plan</button>
 
         <div id="planList"></div>
+
     </section>
 
 
-    <!-- STUDY TIMER -->
-    <section class="timer">
+    <!-- TIMER -->
+    <section class="timer" id="timer">
+
         <h2>⏱️ Study Timer</h2>
 
         <div id="time">25:00</div>
@@ -140,11 +216,13 @@
         <button onclick="startTimer()">Start</button>
         <button onclick="pauseTimer()">Pause</button>
         <button onclick="resetTimer()">Reset</button>
+
     </section>
 
 
-    <!-- QUICK NOTES -->
+    <!-- NOTES -->
     <section class="notes" id="notes">
+
         <h2>📝 Quick Notes</h2>
 
         <textarea id="noteText"
@@ -153,18 +231,27 @@
         <button onclick="saveNote()">Save Note</button>
 
         <p id="noteStatus"></p>
+
     </section>
 
 </main>
 
 
 <footer>
+
+    <div>
+        <h3>🎓 StudentUtility</h3>
+        <p>Plan • Learn • Grow</p>
+    </div>
+
     <p>© 2026 Student Utility Hub</p>
-    <p>Made for Students 📚 | Study Smarter 🚀</p>
+
+    <p>Keep Going 🙂</p>
+
 </footer>
 
 
-<script src="script.js"></script>
+<script src="script.js?v=3"></script>
 
 </body>
 </html>
