@@ -1,4 +1,3 @@
-// EXPLORE TOOLS
 function showMessage() {
     document.getElementById("tools").scrollIntoView({
         behavior: "smooth"
@@ -6,186 +5,297 @@ function showMessage() {
 }
 
 
-// PERCENTAGE CALCULATOR
+// =========================
+// Percentage Calculator
+// =========================
 function calculatePercentage() {
-    let obtained = Number(document.getElementById("obtained").value);
-    let total = Number(document.getElementById("total").value);
+    const obtained = parseFloat(document.getElementById("obtained").value);
+    const total = parseFloat(document.getElementById("total").value);
+    const result = document.getElementById("result");
 
-    if (isNaN(obtained) || isNaN(total) || total <= 0 || obtained < 0 || obtained > total) {
-        document.getElementById("result").innerText =
-            "Please enter valid marks.";
+    if (
+        isNaN(obtained) ||
+        isNaN(total) ||
+        total <= 0 ||
+        obtained < 0 ||
+        obtained > total
+    ) {
+        result.innerText = "Please enter valid marks.";
         return;
     }
 
-    let percentage = (obtained / total) * 100;
+    const percentage = (obtained / total) * 100;
 
-    document.getElementById("result").innerText =
+    result.innerText =
         "Your Percentage: " + percentage.toFixed(2) + "%";
 }
 
 
-// GRADE CALCULATOR
+// =========================
+// Grade Calculator
+// =========================
 function calculateGrade() {
-    let marks = Number(document.getElementById("gradeMarks").value);
+    const percentage =
+        parseFloat(document.getElementById("gradeMarks").value);
 
-    if (isNaN(marks) || marks < 0 || marks > 100) {
-        document.getElementById("gradeResult").innerText =
+    const result = document.getElementById("gradeResult");
+
+    if (
+        isNaN(percentage) ||
+        percentage < 0 ||
+        percentage > 100
+    ) {
+        result.innerText =
             "Please enter percentage between 0 and 100.";
         return;
     }
 
     let grade;
 
-    if (marks >= 90) {
+    if (percentage >= 90) {
         grade = "A+";
-    } else if (marks >= 80) {
+    } else if (percentage >= 80) {
         grade = "A";
-    } else if (marks >= 70) {
+    } else if (percentage >= 70) {
         grade = "B";
-    } else if (marks >= 60) {
+    } else if (percentage >= 60) {
         grade = "C";
-    } else if (marks >= 50) {
+    } else if (percentage >= 50) {
         grade = "D";
-    } else if (marks >= 33) {
+    } else if (percentage >= 33) {
         grade = "E";
     } else {
         grade = "F";
     }
 
-    document.getElementById("gradeResult").innerText =
-        "Your Grade: " + grade;
+    result.innerText = "Your Grade: " + grade;
 }
 
 
-// CGPA CALCULATOR
+// =========================
+// CGPA Calculator
+// =========================
+// CGPA Calculator
+// =========================
+// CGPA Calculator
+// =========================
 function calculateCGPA() {
-    let cgpa = Number(document.getElementById("cgpa").value);
 
-    if (isNaN(cgpa) || cgpa < 0 || cgpa > 10) {
-        document.getElementById("cgpaResult").innerText =
-            "Please enter CGPA between 0 and 10.";
+    const input = document.getElementById("cgpaInput");
+    const result = document.getElementById("cgpaResult");
+
+    const cgpa = parseFloat(input.value);
+
+    if (isNaN(cgpa)) {
+        result.innerText = "Please enter your CGPA.";
         return;
     }
 
-    let percentage = cgpa * 9.5;
+    if (cgpa < 0 || cgpa > 10) {
+        result.innerText = "CGPA must be between 0 and 10.";
+        return;
+    }
 
-    document.getElementById("cgpaResult").innerText =
-        "Approx. Percentage: " + percentage.toFixed(2) + "%";
+    const percentage = cgpa * 9.5;
+
+    result.innerText =
+        "Approx. Percentage: " +
+        percentage.toFixed(2) +
+        "%";
 }
-
-
-// EXAM COUNTDOWN
+// =========================
+// Exam Countdown
+// =========================
 function calculateCountdown() {
-    let examDate = document.getElementById("examDate").value;
+    const dateValue =
+        document.getElementById("examDate").value;
 
-    if (examDate === "") {
-        document.getElementById("countdownResult").innerText =
+    const result =
+        document.getElementById("countdownResult");
+
+    if (!dateValue) {
+        result.innerText =
             "Please select your exam date.";
         return;
     }
 
-    let today = new Date();
+    const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    let exam = new Date(examDate + "T00:00:00");
+    const examDate =
+        new Date(dateValue + "T00:00:00");
 
-    let difference = exam - today;
-    let days = Math.ceil(
+    const difference = examDate - today;
+
+    const days = Math.ceil(
         difference / (1000 * 60 * 60 * 24)
     );
 
     if (days > 0) {
-        document.getElementById("countdownResult").innerText =
+        result.innerText =
             days + " days left 📚";
     } else if (days === 0) {
-        document.getElementById("countdownResult").innerText =
+        result.innerText =
             "Your exam is today! 🎯";
     } else {
-        document.getElementById("countdownResult").innerText =
+        result.innerText =
             "This exam date has passed.";
     }
 }
 
 
-// STUDY PLANNER
+// =========================
+// Study Planner
+// =========================
 function addPlan() {
-    let subject = document.getElementById("subject").value;
-    let hours = document.getElementById("hours").value;
+    const subject =
+        document.getElementById("subject").value.trim();
 
-    if (subject.trim() === "" || hours === "") {
-        alert("Please enter subject and study hours.");
+    const hours =
+        parseFloat(document.getElementById("hours").value);
+
+    const planList =
+        document.getElementById("planList");
+
+    if (
+        !subject ||
+        isNaN(hours) ||
+        hours <= 0
+    ) {
+        alert(
+            "Please enter subject and valid study hours."
+        );
         return;
     }
 
-    let plan = document.createElement("p");
+    const plan =
+        document.createElement("div");
+
+    plan.style.marginTop = "10px";
+    plan.style.padding = "10px";
+    plan.style.background = "#eff6ff";
+    plan.style.borderRadius = "8px";
 
     plan.innerText =
-        "📖 " + subject + " — " + hours + " hours";
+        "📚 " +
+        subject +
+        " — " +
+        hours +
+        " hour(s)";
 
-    document.getElementById("planList").appendChild(plan);
+    planList.appendChild(plan);
 
     document.getElementById("subject").value = "";
     document.getElementById("hours").value = "";
 }
 
 
-// STUDY TIMER
+// =========================
+// Study Timer
+// =========================
 let timeLeft = 25 * 60;
-let timer = null;
+let timerInterval = null;
 
 function updateTimer() {
-    let minutes = Math.floor(timeLeft / 60);
-    let seconds = timeLeft % 60;
+    const timeElement =
+        document.getElementById("time");
 
-    document.getElementById("time").textContent =
-        String(minutes).padStart(2, "0") + ":" +
+    if (!timeElement) return;
+
+    const minutes =
+        Math.floor(timeLeft / 60);
+
+    const seconds =
+        timeLeft % 60;
+
+    timeElement.innerText =
+        String(minutes).padStart(2, "0") +
+        ":" +
         String(seconds).padStart(2, "0");
 }
 
 function startTimer() {
-    if (timer !== null) return;
+    if (timerInterval !== null) return;
 
-    timer = setInterval(function () {
+    timerInterval = setInterval(function () {
+
         if (timeLeft > 0) {
             timeLeft--;
             updateTimer();
         } else {
-            clearInterval(timer);
-            timer = null;
-            alert("Study session complete! 🎉");
+            clearInterval(timerInterval);
+            timerInterval = null;
+
+            alert(
+                "Study session complete! 🎉"
+            );
         }
+
     }, 1000);
 }
 
 function pauseTimer() {
-    clearInterval(timer);
-    timer = null;
+    clearInterval(timerInterval);
+    timerInterval = null;
 }
 
 function resetTimer() {
-    clearInterval(timer);
-    timer = null;
+    clearInterval(timerInterval);
+    timerInterval = null;
+
     timeLeft = 25 * 60;
+
     updateTimer();
 }
 
 
-// QUICK NOTES
+// =========================
+// Quick Notes
+// =========================
 function saveNote() {
-    let note = document.getElementById("noteText").value;
+    const noteText =
+        document.getElementById("noteText");
 
-    if (note.trim() === "") {
-        document.getElementById("noteStatus").innerText =
+    const status =
+        document.getElementById("noteStatus");
+
+    const note =
+        noteText.value.trim();
+
+    if (!note) {
+        status.innerText =
             "Please write something first.";
         return;
     }
 
-    localStorage.setItem("studentNote", note);
+    localStorage.setItem(
+        "studentUtilityNote",
+        note
+    );
 
-    document.getElementById("noteStatus").innerText =
+    status.innerText =
         "Note saved successfully! ✅";
 }
 
 
-// START
-updateTimer();
+// =========================
+// Start Page
+// =========================
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        updateTimer();
+
+        const savedNote =
+            localStorage.getItem(
+                "studentUtilityNote"
+            );
+
+        if (savedNote) {
+            document.getElementById(
+                "noteText"
+            ).value = savedNote;
+        }
+    }
+);
