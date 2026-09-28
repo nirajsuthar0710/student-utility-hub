@@ -309,8 +309,31 @@ function toggleTheme() {
     const button = document.getElementById("themeToggle");
 
     if (document.body.classList.contains("dark-mode")) {
-        button.innerText = "☀️ Light Mode";
+        button.textContent = "☀️ Light Mode";
+        localStorage.setItem("darkMode", "on");
     } else {
-        button.innerText = "🌙 Dark Mode";
+        button.textContent = "🌙 Dark Mode";
+        localStorage.setItem("darkMode", "off");
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    updateTimer();
+
+    const savedNote = localStorage.getItem("studentUtilityNote");
+
+    if (savedNote) {
+        document.getElementById("noteText").value = savedNote;
+    }
+
+    if (localStorage.getItem("darkMode") === "on") {
+        document.body.classList.add("dark-mode");
+
+        const button = document.getElementById("themeToggle");
+
+        if (button) {
+            button.textContent = "☀️ Light Mode";
+        }
+    }
+});
