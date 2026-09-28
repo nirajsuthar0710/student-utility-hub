@@ -604,3 +604,55 @@ body.dark-mode .about-card p {
         grid-template-columns: 1fr;
     }
 }
+/* =========================
+   STEP 28 - FEEDBACK DESIGN
+========================= */
+
+.contact {
+    background: white;
+    padding: 35px;
+    margin-top: 40px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.contact h2 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.contact > p {
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.contact input,
+.contact textarea {
+    max-width: 700px;
+    margin: 8px auto;
+    display: block;
+}
+
+.contact textarea {
+    min-height: 120px;
+}
+
+#feedbackStatus {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+body.dark-mode .contact {
+    background: #1e293b;
+}
+
+body.dark-mode .contact > p {
+    color: #cbd5e1;
+}
+
+@media (max-width: 750px) {
+    .contact {
+        padding: 25px 18px;
+    }
+}
