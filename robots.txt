@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nirajsuthar0710.github.io/student-utility-hub/sitemap.xml
