@@ -292,7 +292,48 @@ function displayPlans() {
             remaining.toFixed(2);
     }
 }
+// =========================
+// ADD STUDY PLAN
+// =========================
 
+function addPlan() {
+
+    const subjectInput =
+        document.getElementById("subject");
+
+    const hoursInput =
+        document.getElementById("hours");
+
+    const subject =
+        subjectInput.value.trim();
+
+    const hours =
+        parseFloat(hoursInput.value);
+
+    if (!subject || isNaN(hours) || hours <= 0) {
+        alert("Please enter subject and valid study hours.");
+        return;
+    }
+
+    const plans =
+        JSON.parse(localStorage.getItem("studyPlans")) || [];
+
+    plans.push({
+        subject: subject,
+        hours: hours,
+        completed: false
+    });
+
+    localStorage.setItem(
+        "studyPlans",
+        JSON.stringify(plans)
+    );
+
+    subjectInput.value = "";
+    hoursInput.value = "";
+
+    displayPlans();
+}
 
 // =========================
 // DELETE STUDY PLAN
