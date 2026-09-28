@@ -1,3 +1,8 @@
+/* =========================================
+   STUDENT UTILITY HUB
+   PROFESSIONAL STYLE
+========================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,21 +14,33 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
     color: #172033;
     line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* HEADER */
+/* =========================================
+   HEADER
+========================================= */
 
 header {
-    background: #17233a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(12px);
+
     color: white;
-    padding: 18px 7%;
+    padding: 16px 7%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .brand {
@@ -33,11 +50,24 @@ header {
 }
 
 .brand-icon {
-    font-size: 32px;
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, #2563eb, #60a5fa);
+    border-radius: 13px;
+
+    font-size: 25px;
+
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
 .brand h1 {
     font-size: 22px;
+    line-height: 1.2;
 }
 
 .brand h1 span {
@@ -51,97 +81,171 @@ header {
 
 nav {
     display: flex;
-    gap: 25px;
+    align-items: center;
+    gap: 22px;
 }
 
 nav a {
-    color: white;
+    color: #e2e8f0;
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
+
+    transition: color 0.2s ease;
 }
 
 nav a:hover {
     color: #60a5fa;
 }
 
+/* DARK MODE BUTTON */
 
-/* MAIN */
+#themeToggle {
+    width: auto;
+    margin: 0;
+    padding: 8px 13px;
 
-main {
-    max-width: 1150px;
-    margin: auto;
-    padding: 35px 25px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+
+    font-size: 13px;
 }
 
+#themeToggle:hover {
+    background: rgba(255,255,255,0.15);
+    transform: none;
+}
 
-/* HERO */
+/* =========================================
+   MAIN
+========================================= */
+
+main {
+    max-width: 1180px;
+    margin: auto;
+    padding: 40px 24px;
+}
+
+/* =========================================
+   HERO
+========================================= */
 
 .hero {
-    min-height: 380px;
-    background: linear-gradient(135deg, #ffffff, #eaf3ff);
-    border-radius: 24px;
-    padding: 60px;
+    min-height: 430px;
+
+    background:
+        radial-gradient(circle at 85% 20%, rgba(96,165,250,0.25), transparent 30%),
+        linear-gradient(135deg, #ffffff, #eaf3ff);
+
+    border-radius: 28px;
+
+    padding: 65px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    margin-bottom: 55px;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.10);
+
+    margin-bottom: 65px;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    width: 220px;
+    height: 220px;
+
+    background: rgba(37, 99, 235, 0.08);
+
+    border-radius: 50%;
+
+    right: -70px;
+    bottom: -70px;
 }
 
 .hero-content {
-    max-width: 600px;
+    max-width: 650px;
+    position: relative;
+    z-index: 2;
 }
 
 .badge {
     display: inline-block;
+
     background: #dbeafe;
-    color: #2563eb;
-    padding: 7px 14px;
-    border-radius: 20px;
-    font-size: 14px;
+    color: #1d4ed8;
+
+    padding: 8px 15px;
+    border-radius: 30px;
+
+    font-size: 13px;
     font-weight: bold;
-    margin-bottom: 15px;
+
+    margin-bottom: 18px;
 }
 
 .hero h2 {
-    font-size: 48px;
-    line-height: 1.15;
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.08;
+
     margin-bottom: 20px;
+
+    letter-spacing: -1px;
 }
 
-.hero-content > p:not(.badge) {
+.hero-content > p {
     color: #64748b;
-    margin-bottom: 25px;
+    font-size: 17px;
+
+    max-width: 570px;
+    margin-bottom: 30px;
 }
 
 .hero-button {
     display: inline-block;
-    background: #2563eb;
+
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+
     color: white;
-    padding: 13px 22px;
-    border-radius: 10px;
+
+    padding: 14px 23px;
+    border-radius: 12px;
+
     text-decoration: none;
     font-weight: bold;
+
+    box-shadow: 0 10px 22px rgba(37, 99, 235, 0.25);
+
+    transition: all 0.25s ease;
 }
 
 .hero-button:hover {
-    background: #1d4ed8;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 28px rgba(37, 99, 235, 0.32);
 }
 
 .hero-visual {
-    font-size: 100px;
+    font-size: 115px;
+
     position: relative;
-    padding: 35px;
+    padding: 40px;
+
+    animation: float 3s ease-in-out infinite;
 }
 
 .hero-visual span {
     position: absolute;
-    font-size: 35px;
+    font-size: 38px;
 }
 
 .hero-visual span:first-of-type {
-    top: 10px;
+    top: 5px;
     right: 0;
 }
 
@@ -150,23 +254,39 @@ main {
     left: 0;
 }
 
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
 
-/* TOOLS */
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* =========================================
+   SECTION HEADINGS
+========================================= */
 
 .tools {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .tools h2 {
     text-align: center;
-    font-size: 32px;
+    font-size: 34px;
 }
 
 .section-subtitle {
     text-align: center;
     color: #64748b;
-    margin: 8px 0 30px;
+
+    margin: 8px 0 32px;
 }
+
+/* =========================================
+   TOOL CARDS
+========================================= */
 
 .tool-container {
     display: grid;
@@ -176,82 +296,150 @@ main {
 
 .tool-card {
     background: white;
-    padding: 25px;
-    border-radius: 17px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-    transition: 0.25s;
+
+    padding: 27px;
+
+    border-radius: 20px;
+
+    border: 1px solid #e8edf4;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06);
+
+    transition: all 0.25s ease;
 }
 
 .tool-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    transform: translateY(-7px);
+
+    border-color: #bfdbfe;
+
+    box-shadow:
+        0 18px 35px rgba(15, 23, 42, 0.10);
 }
 
 .tool-icon {
-    width: 45px;
-    height: 45px;
+    width: 52px;
+    height: 52px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     background: #eff6ff;
-    color: #2563eb;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 15px;
+
+    border-radius: 15px;
+
+    font-size: 23px;
+
+    margin-bottom: 17px;
 }
 
 .tool-card h3 {
+    font-size: 18px;
     margin-bottom: 8px;
 }
 
 .tool-card p {
     color: #64748b;
+
     font-size: 14px;
-    margin-bottom: 18px;
+
+    margin-bottom: 19px;
 }
 
 .tool-card a {
     color: #2563eb;
+
     font-weight: bold;
     text-decoration: none;
+
+    font-size: 14px;
 }
 
+.tool-card a:hover {
+    color: #1d4ed8;
+}
 
-/* CALCULATORS */
+/* =========================================
+   CALCULATORS / PLANNER / TIMER / NOTES
+========================================= */
 
 .calculator,
 .planner,
 .timer,
-.notes {
+.notes,
+.about,
+.contact,
+.support {
     background: white;
-    padding: 28px;
-    border-radius: 18px;
-    margin-top: 22px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+
+    padding: 32px;
+
+    border-radius: 20px;
+
+    margin-top: 25px;
+
+    border: 1px solid #e8edf4;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06);
+
+    transition: all 0.25s ease;
+}
+
+.calculator:hover,
+.planner:hover,
+.timer:hover,
+.notes:hover,
+.about:hover,
+.contact:hover,
+.support:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 32px rgba(15, 23, 42, 0.09);
 }
 
 .calculator h2,
 .planner h2,
 .timer h2,
-.notes h2 {
+.notes h2,
+.about h2,
+.contact h2,
+.support h2 {
     margin-bottom: 18px;
 }
 
 input,
 textarea {
     width: 100%;
-    padding: 13px;
+
+    padding: 14px;
+
     margin: 7px 0;
+
     border: 1px solid #dbe1ea;
-    border-radius: 9px;
+
+    border-radius: 11px;
+
     font-size: 15px;
+
     outline: none;
+
+    background: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 input:focus,
 textarea:focus {
     border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.10);
 }
 
 textarea {
@@ -261,129 +449,50 @@ textarea {
 
 button {
     border: none;
-    background: #2563eb;
+
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+
     color: white;
-    padding: 11px 18px;
-    border-radius: 9px;
+
+    padding: 12px 19px;
+
+    border-radius: 10px;
+
     cursor: pointer;
+
     font-weight: bold;
-    margin-top: 5px;
+
+    margin-top: 6px;
+
+    transition: all 0.2s ease;
 }
 
 button:hover {
-    background: #1d4ed8;
-    transform: translateY(-1px);
-}
+    transform: translateY(-2px);
 
-#time {
-    font-size: 48px;
-    font-weight: bold;
-    margin: 18px 0;
-    color: #2563eb;
-}
-
-
-/* FOOTER */
-
-footer {
-    margin-top: 50px;
-    padding: 35px 20px;
-    background: #17233a;
-    color: white;
-    text-align: center;
-}
-
-footer h3 {
-    margin-bottom: 5px;
-}
-
-footer p {
-    color: #cbd5e1;
-    margin: 4px;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 750px) {
-
-    header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-    nav {
-        gap: 15px;
-    }
-
-    main {
-        padding: 20px 14px;
-    }
-
-    .hero {
-        padding: 40px 25px;
-        text-align: center;
-        flex-direction: column;
-    }
-
-    .hero h2 {
-        font-size: 36px;
-    }
-
-    .hero-visual {
-        font-size: 70px;
-    }
-
-    .tool-container {
-        grid-template-columns: 1fr;
-    }
-
-       .calculator,
-    .planner,
-    .timer,
-    .notes {
-        padding: 22px;
-    }
-
-} /* MOBILE MEDIA END */
-
-
-/* =========================
-   STEP 21 - FINAL POLISH
-========================= */
-.calculator,
-.planner,
-.timer,
-.notes {
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.calculator:hover,
-.planner:hover,
-.timer:hover,
-.notes:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
-}
-
-button {
-    transition: all 0.2s ease;
+    box-shadow:
+        0 8px 18px rgba(37, 99, 235, 0.25);
 }
 
 button:active {
     transform: scale(0.97);
 }
 
-input,
-textarea {
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+#time {
+    font-size: 52px;
+
+    font-weight: bold;
+
+    margin: 20px 0;
+
+    color: #2563eb;
+
+    letter-spacing: 2px;
 }
 
-input:focus,
-textarea:focus {
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
-}
+/* =========================================
+   RESULTS
+========================================= */
 
 #result,
 #gradeResult,
@@ -391,190 +500,125 @@ textarea:focus {
 #countdownResult,
 #noteStatus {
     margin-top: 14px;
+
     font-weight: bold;
+
+    color: #2563eb;
 }
 
 #planList {
-    margin-top: 15px;
+    margin-top: 16px;
 }
 
 #planList p,
 #planList div {
     background: #eff6ff;
-    padding: 10px 12px;
-    border-radius: 8px;
+
+    padding: 11px 13px;
+
+    border-radius: 10px;
+
     margin-top: 8px;
 }
 
-@media (max-width: 500px) {
-
-    .hero h2 {
-        font-size: 30px;
-    }
-
-    .hero {
-        min-height: 330px;
-    }
-
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    button {
-        width: 100%;
-    }
-
-    #time {
-        font-size: 40px;
-    }
-}
-/* =========================
-   DARK MODE
-========================= */
-
-body.dark-mode {
-    background: #0f172a;
-    color: #e2e8f0;
-}
-
-body.dark-mode header {
-    background: #020617;
-}
-
-body.dark-mode .hero {
-    background: linear-gradient(135deg, #1e293b, #172554);
-}
-
-body.dark-mode .hero-content > p:not(.badge),
-body.dark-mode .section-subtitle,
-body.dark-mode .tool-card p {
-    color: #cbd5e1;
-}
-
-body.dark-mode .tool-card,
-body.dark-mode .calculator,
-body.dark-mode .planner,
-body.dark-mode .timer,
-body.dark-mode .notes {
-    background: #1e293b;
-    color: #e2e8f0;
-}
-
-body.dark-mode input,
-body.dark-mode textarea {
-    background: #0f172a;
-    color: #e2e8f0;
-    border-color: #475569;
-}
-
-body.dark-mode input::placeholder,
-body.dark-mode textarea::placeholder {
-    color: #94a3b8;
-}
-
-body.dark-mode footer {
-    background: #020617;
-}
-
-body.dark-mode .tool-icon {
-    background: #172554;
-}
-
-body.dark-mode #time {
-    color: #60a5fa;
-}
-/* =========================
-   STEP 26 - PLANNER POLISH
-========================= */
+/* =========================================
+   PROGRESS
+========================================= */
 
 .progress-box {
     margin-top: 22px;
-    padding: 18px;
+
+    padding: 20px;
+
     background: #f8fafc;
-    border-radius: 14px;
+
+    border-radius: 15px;
+
     border: 1px solid #e2e8f0;
 }
 
 .progress-box p {
-    font-size: 16px;
+    font-size: 15px;
+
     font-weight: bold;
-    margin-bottom: 10px;
+
+    margin-bottom: 11px;
 }
 
 .progress-bar {
     width: 100%;
     height: 18px;
+
     background: #e2e8f0;
+
     border-radius: 20px;
+
     overflow: hidden;
 }
 
 #progressFill {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #2563eb, #60a5fa);
+
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #60a5fa
+    );
+
     border-radius: 20px;
+
     transition: width 0.5s ease;
 }
 
-/* Planner buttons */
-
 #planList button {
     width: auto;
+
     margin-top: 0;
+
     padding: 7px 12px;
+
     font-size: 13px;
 }
 
-/* Dark mode */
-
-body.dark-mode .progress-box {
-    background: #172554;
-    border-color: #334155;
-}
-
-body.dark-mode .progress-bar {
-    background: #334155;
-}
-
-body.dark-mode #planList div {
-    color: #172033;
-}
-/* =========================
-   STEP 27 - ABOUT DESIGN
-========================= */
+/* =========================================
+   ABOUT
+========================================= */
 
 .about {
-    background: white;
-    padding: 35px;
-    margin-top: 40px;
-    border-radius: 18px;
     text-align: center;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+
+    margin-top: 45px;
 }
 
 .about h2 {
     font-size: 30px;
-    margin-bottom: 10px;
 }
 
 .about > p {
-    max-width: 700px;
-    margin: 0 auto 25px;
+    max-width: 720px;
+
+    margin: 0 auto 28px;
+
     color: #64748b;
 }
 
 .about-cards {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 18px;
 }
 
 .about-card {
     background: #f8fafc;
-    padding: 20px;
-    border-radius: 14px;
+
+    padding: 22px;
+
+    border-radius: 15px;
+
+    border: 1px solid #e2e8f0;
 }
 
 .about-card h3 {
@@ -583,54 +627,38 @@ body.dark-mode #planList div {
 
 .about-card p {
     color: #64748b;
+
     font-size: 14px;
 }
 
-body.dark-mode .about {
-    background: #1e293b;
-}
-
-body.dark-mode .about-card {
-    background: #172554;
-}
-
-body.dark-mode .about > p,
-body.dark-mode .about-card p {
-    color: #cbd5e1;
-}
-
-@media (max-width: 750px) {
-    .about-cards {
-        grid-template-columns: 1fr;
-    }
-}
-/* =========================
-   STEP 28 - FEEDBACK DESIGN
-========================= */
+/* =========================================
+   FEEDBACK
+========================================= */
 
 .contact {
-    background: white;
-    padding: 35px;
-    margin-top: 40px;
-    border-radius: 18px;
+    max-width: 1132px;
+
+    margin: 45px auto 0;
+
     text-align: center;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
 }
 
 .contact h2 {
     font-size: 30px;
-    margin-bottom: 8px;
 }
 
 .contact > p {
     color: #64748b;
+
     margin-bottom: 20px;
 }
 
 .contact input,
 .contact textarea {
     max-width: 700px;
+
     margin: 8px auto;
+
     display: block;
 }
 
@@ -640,19 +668,357 @@ body.dark-mode .about-card p {
 
 #feedbackStatus {
     margin-top: 15px;
+
     font-weight: bold;
 }
 
-body.dark-mode .contact {
-    background: #1e293b;
+/* =========================================
+   SUPPORT
+========================================= */
+
+.support {
+    text-align: center;
+
+    margin-top: 45px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #ffffff
+        );
 }
 
-body.dark-mode .contact > p {
+.support p {
+    color: #64748b;
+
+    margin-top: 7px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    margin-top: 65px;
+
+    padding: 42px 20px;
+
+    background: #0f172a;
+
+    color: white;
+
+    text-align: center;
+}
+
+footer h3 {
+    margin-bottom: 5px;
+}
+
+footer p {
+    color: #94a3b8;
+
+    margin: 5px;
+}
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    margin-top: 18px;
+}
+
+.footer-links a {
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #60a5fa;
+}
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+body.dark-mode {
+    background: #020617;
+
+    color: #e2e8f0;
+}
+
+body.dark-mode header {
+    background: rgba(2, 6, 23, 0.96);
+}
+
+body.dark-mode .hero {
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(59,130,246,0.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #172554
+        );
+}
+
+body.dark-mode .hero-content > p,
+body.dark-mode .section-subtitle,
+body.dark-mode .tool-card p,
+body.dark-mode .about > p,
+body.dark-mode .about-card p,
+body.dark-mode .contact > p,
+body.dark-mode .support p {
     color: #cbd5e1;
 }
 
+body.dark-mode .tool-card,
+body.dark-mode .calculator,
+body.dark-mode .planner,
+body.dark-mode .timer,
+body.dark-mode .notes,
+body.dark-mode .about,
+body.dark-mode .contact {
+    background: #0f172a;
+
+    border-color: #1e293b;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25);
+}
+
+body.dark-mode .about-card {
+    background: #172554;
+
+    border-color: #1e3a8a;
+}
+
+body.dark-mode .support {
+    background:
+        linear-gradient(
+            135deg,
+            #172554,
+            #0f172a
+        );
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+    background: #020617;
+
+    color: #e2e8f0;
+
+    border-color: #334155;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #94a3b8;
+}
+
+body.dark-mode .tool-icon {
+    background: #172554;
+}
+
+body.dark-mode #time {
+    color: #60a5fa;
+}
+
+body.dark-mode .progress-box {
+    background: #172554;
+
+    border-color: #334155;
+}
+
+body.dark-mode .progress-bar {
+    background: #334155;
+}
+
+body.dark-mode #planList div,
+body.dark-mode #planList p {
+    background: #172554;
+
+    color: #e2e8f0;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .tool-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        padding: 50px;
+    }
+
+    .hero h2 {
+        font-size: 42px;
+    }
+
+    .about-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 750px) {
-    .contact {
-        padding: 25px 18px;
+
+    header {
+        position: relative;
+
+        flex-direction: column;
+
+        gap: 16px;
+
+        text-align: center;
+
+        padding: 18px 15px;
+    }
+
+    nav {
+        width: 100%;
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 10px 16px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    main {
+        padding: 22px 14px;
+    }
+
+    .hero {
+        min-height: 500px;
+
+        padding: 40px 22px;
+
+        text-align: center;
+
+        flex-direction: column;
+
+        justify-content: center;
+    }
+
+    .hero h2 {
+        font-size: 34px;
+    }
+
+    .hero-content > p {
+        font-size: 15px;
+    }
+
+    .hero-visual {
+        font-size: 75px;
+
+        margin-top: 15px;
+    }
+
+    .hero-visual span {
+        font-size: 28px;
+    }
+
+    .tool-container {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator,
+    .planner,
+    .timer,
+    .notes,
+    .about,
+    .contact,
+    .support {
+        padding: 23px 18px;
+    }
+
+    .about-cards {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #themeToggle {
+        width: auto;
+    }
+
+    #time {
+        font-size: 42px;
+    }
+
+    .footer-links {
+        gap: 12px;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+    .brand h1 {
+        font-size: 20px;
+    }
+
+    .hero {
+        min-height: 470px;
+    }
+
+    .hero h2 {
+        font-size: 30px;
+    }
+
+    .hero-button {
+        width: 100%;
+    }
+
+    .tools h2 {
+        font-size: 28px;
+    }
+
+    .calculator h2,
+    .planner h2,
+    .timer h2,
+    .notes h2,
+    .about h2,
+    .contact h2,
+    .support h2 {
+        font-size: 24px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+
+        gap: 8px;
     }
 }
