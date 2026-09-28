@@ -148,47 +148,74 @@ function calculateCountdown() {
 // Study Planner
 // =========================
 function addPlan() {
-    const subject =
-        document.getElementById("subject").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const hours = parseFloat(document.getElementById("hours").value);
+    const planList = document.getElementById("planList");
 
-    const hours =
-        parseFloat(document.getElementById("hours").value);
-
-    const planList =
-        document.getElementById("planList");
-
-    if (
-        !subject ||
-        isNaN(hours) ||
-        hours <= 0
-    ) {
-        alert(
-            "Please enter subject and valid study hours."
-        );
+    if (!subject || isNaN(hours) || hours <= 0) {
+        alert("Please enter subject and valid study hours.");
         return;
     }
 
-    const plan =
-        document.createElement("div");
+    const plan = document.createElement("div");
 
     plan.style.marginTop = "10px";
-    plan.style.padding = "10px";
+    plan.style.padding = "12px";
     plan.style.background = "#eff6ff";
     plan.style.borderRadius = "8px";
+    plan.style.display = "flex";
+    plan.style.justifyContent = "space-between";
+    plan.style.alignItems = "center";
+    plan.style.gap = "10px";
 
-    plan.innerText =
-        "📚 " +
-        subject +
-        " — " +
-        hours +
-        " hour(s)";
+    const text = document.createElement("span");
+
+    text.innerText =
+        "📚 " + subject + " — " + hours + " hour(s)";
+
+    const deleteButton = document.createElement("button");
+
+    deleteButton.innerText = "Delete";
+
+    deleteButton.onclick = function () {
+        plan.remove();
+        updateTotalHours();
+    };
+
+    plan.appendChild(text);
+    plan.appendChild(deleteButton);
 
     planList.appendChild(plan);
 
     document.getElementById("subject").value = "";
     document.getElementById("hours").value = "";
+
+    updateTotalHours();
 }
 
+
+function updateTotalHours() {
+    const plans = document.querySelectorAll("#planList > div");
+
+    let total = 0;
+
+    plans.forEach(function (plan) {
+        const text = plan.innerText;
+
+        const match = text.match(/—\s*([\d.]+)\s*hour/);
+
+        if (match) {
+            total += parseFloat(match[1]);
+        }
+    });
+
+    const totalHours = document.getElementById("totalHours");
+
+    if (totalHours) {
+        totalHours.innerText =
+            "Total Study Hours: " + total.toFixed(2);
+    }
+}
 
 // =========================
 // Study Timer
