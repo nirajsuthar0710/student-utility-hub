@@ -174,54 +174,6 @@ function calculateCountdown() {
 // =========================
 // STUDY PLANNER
 // =========================
-
-function addPlan() {
-
-    const subject =
-        document.getElementById("subject").value.trim();
-
-    const hours =
-        parseFloat(
-            document.getElementById("hours").value
-        );
-
-    if (
-        !subject ||
-        isNaN(hours) ||
-        hours <= 0
-    ) {
-        alert(
-            "Please enter subject and valid study hours."
-        );
-        return;
-    }
-
-    const plans =
-        JSON.parse(
-            localStorage.getItem("studyPlans")
-        ) || [];
-
-    plans.push({
-        subject: subject,
-        hours: hours
-    });
-
-    localStorage.setItem(
-        "studyPlans",
-        JSON.stringify(plans)
-    );
-
-    document.getElementById("subject").value = "";
-    document.getElementById("hours").value = "";
-
-    displayPlans();
-}
-
-
-// =========================
-// DISPLAY STUDY PLANS
-// =========================
-
 function displayPlans() {
 
     const planList =
@@ -245,44 +197,68 @@ function displayPlans() {
 
         total += Number(plan.hours);
 
-        const box =
-            document.createElement("div");
+        const box = document.createElement("div");
 
         box.style.marginTop = "10px";
         box.style.padding = "12px";
-        box.style.background = "#eff6ff";
+        box.style.background = plan.completed
+            ? "#dcfce7"
+            : "#eff6ff";
+
         box.style.borderRadius = "8px";
         box.style.display = "flex";
         box.style.justifyContent = "space-between";
         box.style.alignItems = "center";
         box.style.gap = "10px";
 
-        const text =
-            document.createElement("span");
+        const text = document.createElement("span");
 
         text.innerText =
-            "📚 " +
+            (plan.completed ? "✅ " : "📚 ") +
             plan.subject +
             " — " +
             plan.hours +
             " hour(s)";
 
+        const doneButton =
+            document.createElement("button");
+
+        doneButton.type = "button";
+
+        doneButton.innerText =
+            plan.completed ? "Undo" : "Done";
+
+        doneButton.onclick = function () {
+
+            plans[index].completed =
+                !plans[index].completed;
+
+            localStorage.setItem(
+                "studyPlans",
+                JSON.stringify(plans)
+            );
+
+            displayPlans();
+        };
+
         const deleteButton =
             document.createElement("button");
 
-        deleteButton.innerText =
-            "Delete";
+        deleteButton.type = "button";
+        deleteButton.innerText = "Delete";
 
-        deleteButton.type =
-            "button";
+        deleteButton.onclick = function () {
+            deletePlan(index);
+        };
 
-        deleteButton.onclick =
-            function () {
-                deletePlan(index);
-            };
+        const buttons =
+            document.createElement("div");
+
+        buttons.appendChild(doneButton);
+        buttons.appendChild(deleteButton);
 
         box.appendChild(text);
-        box.appendChild(deleteButton);
+        box.appendChild(buttons);
 
         planList.appendChild(box);
     });
