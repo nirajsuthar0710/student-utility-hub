@@ -1,472 +1,316 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="Student Utility Hub - Free calculators, study timer, notes, planner and exam countdown tools for students.">
-
-    <title>Student Utility Hub</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header>
-
-    <div class="brand">
-
-        <div class="brand-icon">🎓</div>
-
-        <div>
-            <h1>Student<span>Utility</span></h1>
-            <p>Plan • Learn • Grow</p>
-        </div>
-
-    </div>
-
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#tools">Tools</a>
-        <a href="#notes">Notes</a>
-
-        <button
-            id="themeToggle"
-            type="button"
-            onclick="toggleTheme()">
-            🌙 Dark Mode
-        </button>
-    </nav>
-
-</header>
-
-
-<main>
-
-    <!-- HERO -->
-
-    <section class="hero" id="home">
-
-        <div class="hero-content">
-
-            <span class="badge">
-                📚 Made for Students
-            </span>
-
-            <h2>
-                Study Smarter.<br>
-                Achieve More. 🚀
-            </h2>
-
-            <p>
-                Simple and useful tools to help students
-                calculate, plan and study better.
-            </p>
-
-            <a href="#tools" class="hero-button">
-                Explore Tools →
-            </a>
-
-        </div>
-
-        <div class="hero-visual">
-            🎓
-            <span>📚</span>
-            <span>✏️</span>
-        </div>
-
-    </section>
-
-
-    <!-- TOOLS -->
-
-    <section class="tools" id="tools">
-
-        <h2>Our Tools</h2>
-
-        <p class="section-subtitle">
-            Everything you need for smarter study
-        </p>
-
-        <div class="tool-container">
-
-            <!-- PERCENTAGE -->
-
-            <div class="tool-card">
-
-                <div class="tool-icon">
-                    🧮
-                </div>
-
-                <h3>
-                    Percentage Calculator
-                </h3>
-
-                <p>
-                    Calculate your marks percentage
-                    quickly and easily.
-                </p>
-
-                <a href="#percentage">
-                    Open Tool →
-                </a>
-
-            </div>
-
-
-            <!-- GRADE -->
-
-            <div class="tool-card">
-
-                <div class="tool-icon">
-                    🎯
-                </div>
-
-                <h3>
-                    Grade Calculator
-                </h3>
-
-                <p>
-                    Find your grade from your
-                    percentage.
-                </p>
-
-                <a href="#grade">
-                    Open Tool →
-                </a>
-
-            </div>
-
-
-            <!-- CGPA -->
-
-            <div class="tool-card">
-
-                <div class="tool-icon">
-                    🎓
-                </div>
-
-                <h3>
-                    CGPA Calculator
-                </h3>
-
-                <p>
-                    Convert your CGPA into
-                    approximate percentage.
-                </p>
-
-                <a href="#cgpa-section">
-                    Open Tool →
-                </a>
-
-            </div>
-
-
-            <!-- COUNTDOWN -->
-
-            <div class="tool-card">
-
-                <div class="tool-icon">
-                    📅
-                </div>
-
-                <h3>
-                    Exam Countdown
-                </h3>
-
-                <p>
-                    Check how many days are
-                    left for your exam.
-                </p>
-
-                <a href="#countdown">
-                    Open Tool →
-                </a>
-
-            </div>
-
-
-            <!-- PLANNER -->
-
-            <div class="tool-card">
-
-                <div class="tool-icon">
-                    📚
-                </div>
-
-                <h3>
-                    Study Planner
-                </h3>
-
-                <p>
-                    Plan your subjects and
-                    study hours.
-                </p>
-
-                <a href="#planner">
-                    Open Tool →
-                </a>
-
-            </div>
-
-
-            <!-- TIMER -->
-
-            <div class="tool-card">
-
-                <div class="tool-icon">
-                    ⏱️
-                </div>
-
-                <h3>
-                    Study Timer
-                </h3>
-
-                <p>
-                    Focus on your studies with
-                    a 25-minute timer.
-                </p>
-
-                <a href="#timer">
-                    Open Tool →
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PERCENTAGE CALCULATOR -->
-
-    <section class="calculator"
-        id="percentage">
-
-        <h2>
-            🧮 Percentage Calculator
-        </h2>
-
-        <input
-            type="number"
-            id="obtained"
-            placeholder="Marks Obtained">
-
-        <input
-            type="number"
-            id="total"
-            placeholder="Total Marks">
-
-        <button
-            type="button"
-            onclick="calculatePercentage()">
-            Calculate
-        </button>
-
-        <h3 id="result"></h3>
-
-    </section>
-
-
-    <!-- GRADE CALCULATOR -->
-
-    <section class="calculator"
-        id="grade">
-
-        <h2>
-            🎯 Grade Calculator
-        </h2>
-
-        <input
-            type="number"
-            id="gradeMarks"
-            placeholder="Enter Percentage">
-
-        <button
-            type="button"
-            onclick="calculateGrade()">
-            Check Grade
-        </button>
-
-        <h3 id="gradeResult"></h3>
-
-    </section>
-
-
-    <!-- CGPA CALCULATOR -->
-
-    <section class="calculator"
-        id="cgpa-section">
-
-        <h2>
-            🎓 CGPA Calculator
-        </h2>
-
-        <input
-            type="number"
-            id="cgpaInput"
-            min="0"
-            max="10"
-            step="0.01"
-            placeholder="Enter CGPA">
-
-        <button
-            type="button"
-            onclick="calculateCGPA()">
-            Calculate Percentage
-        </button>
-
-        <h3 id="cgpaResult"></h3>
-
-    </section>
-
-
-    <!-- EXAM COUNTDOWN -->
-
-    <section class="calculator"
-        id="countdown">
-
-        <h2>
-            📅 Exam Countdown
-        </h2>
-
-        <input
-            type="date"
-            id="examDate">
-
-        <button
-            type="button"
-            onclick="calculateCountdown()">
-            Check Days Left
-        </button>
-
-        <h3 id="countdownResult"></h3>
-
-    </section>
-
-
-    <!-- STUDY PLANNER -->
-
-    <section class="planner"
-        id="planner">
-
-        <h2>
-            📚 Study Planner
-        </h2>
-
-        <input
-            type="text"
-            id="subject"
-            placeholder="Enter Subject">
-
-        <input
-            type="number"
-            id="hours"
-            placeholder="Study Hours">
-
-        <button
-            type="button"
-            onclick="addPlan()">
-            Add Plan
-        </button>
-
-        <div id="planList"></div>
-
-    </section>
-
-
-    <!-- TIMER -->
-
-    <section class="timer"
-        id="timer">
-
-        <h2>
-            ⏱️ Study Timer
-        </h2>
-
-        <div id="time">
-            25:00
-        </div>
-
-        <button
-            type="button"
-            onclick="startTimer()">
-            Start
-        </button>
-
-        <button
-            type="button"
-            onclick="pauseTimer()">
-            Pause
-        </button>
-
-        <button
-            type="button"
-            onclick="resetTimer()">
-            Reset
-        </button>
-
-    </section>
-
-
-    <!-- NOTES -->
-
-    <section class="notes"
-        id="notes">
-
-        <h2>
-            📝 Quick Notes
-        </h2>
-
-        <textarea
-            id="noteText"
-            placeholder="Write your notes..."></textarea>
-
-        <button
-            type="button"
-            onclick="saveNote()">
-            Save Note
-        </button>
-
-        <p id="noteStatus"></p>
-
-    </section>
-
-</main>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div>
-        <h3>
-            🎓 StudentUtility
-        </h3>
-
-        <p>
-            Plan • Learn • Grow
-        </p>
-    </div>
-
-    <p>
-        © 2026 Student Utility Hub
-    </p>
-
-    <p>
-        Keep Going 🙂
-    </p>
-
-</footer>
-
-
-<script src="script.js"></script>
-
-</body>
-
-</html>
+function showMessage() {
+    document.getElementById("tools").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+// =========================
+// Percentage Calculator
+// =========================
+function calculatePercentage() {
+    const obtained = parseFloat(document.getElementById("obtained").value);
+    const total = parseFloat(document.getElementById("total").value);
+    const result = document.getElementById("result");
+
+    if (
+        isNaN(obtained) ||
+        isNaN(total) ||
+        total <= 0 ||
+        obtained < 0 ||
+        obtained > total
+    ) {
+        result.innerText = "Please enter valid marks.";
+        return;
+    }
+
+    const percentage = (obtained / total) * 100;
+
+    result.innerText =
+        "Your Percentage: " + percentage.toFixed(2) + "%";
+}
+
+
+// =========================
+// Grade Calculator
+// =========================
+function calculateGrade() {
+    const percentage =
+        parseFloat(document.getElementById("gradeMarks").value);
+
+    const result = document.getElementById("gradeResult");
+
+    if (
+        isNaN(percentage) ||
+        percentage < 0 ||
+        percentage > 100
+    ) {
+        result.innerText =
+            "Please enter percentage between 0 and 100.";
+        return;
+    }
+
+    let grade;
+
+    if (percentage >= 90) {
+        grade = "A+";
+    } else if (percentage >= 80) {
+        grade = "A";
+    } else if (percentage >= 70) {
+        grade = "B";
+    } else if (percentage >= 60) {
+        grade = "C";
+    } else if (percentage >= 50) {
+        grade = "D";
+    } else if (percentage >= 33) {
+        grade = "E";
+    } else {
+        grade = "F";
+    }
+
+    result.innerText = "Your Grade: " + grade;
+}
+
+
+// =========================
+// CGPA Calculator
+// =========================
+// CGPA Calculator
+// =========================
+// CGPA Calculator
+// =========================
+function calculateCGPA() {
+
+    const input = document.getElementById("cgpaInput");
+    const result = document.getElementById("cgpaResult");
+
+    const cgpa = parseFloat(input.value);
+
+    if (isNaN(cgpa)) {
+        result.innerText = "Please enter your CGPA.";
+        return;
+    }
+
+    if (cgpa < 0 || cgpa > 10) {
+        result.innerText = "CGPA must be between 0 and 10.";
+        return;
+    }
+
+    const percentage = cgpa * 9.5;
+
+    result.innerText =
+        "Approx. Percentage: " +
+        percentage.toFixed(2) +
+        "%";
+}
+// =========================
+// Exam Countdown
+// =========================
+function calculateCountdown() {
+    const dateValue =
+        document.getElementById("examDate").value;
+
+    const result =
+        document.getElementById("countdownResult");
+
+    if (!dateValue) {
+        result.innerText =
+            "Please select your exam date.";
+        return;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const examDate =
+        new Date(dateValue + "T00:00:00");
+
+    const difference = examDate - today;
+
+    const days = Math.ceil(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+    if (days > 0) {
+        result.innerText =
+            days + " days left 📚";
+    } else if (days === 0) {
+        result.innerText =
+            "Your exam is today! 🎯";
+    } else {
+        result.innerText =
+            "This exam date has passed.";
+    }
+}
+
+
+// =========================
+// Study Planner
+// =========================
+function addPlan() {
+    const subject =
+        document.getElementById("subject").value.trim();
+
+    const hours =
+        parseFloat(document.getElementById("hours").value);
+
+    const planList =
+        document.getElementById("planList");
+
+    if (
+        !subject ||
+        isNaN(hours) ||
+        hours <= 0
+    ) {
+        alert(
+            "Please enter subject and valid study hours."
+        );
+        return;
+    }
+
+    const plan =
+        document.createElement("div");
+
+    plan.style.marginTop = "10px";
+    plan.style.padding = "10px";
+    plan.style.background = "#eff6ff";
+    plan.style.borderRadius = "8px";
+
+    plan.innerText =
+        "📚 " +
+        subject +
+        " — " +
+        hours +
+        " hour(s)";
+
+    planList.appendChild(plan);
+
+    document.getElementById("subject").value = "";
+    document.getElementById("hours").value = "";
+}
+
+
+// =========================
+// Study Timer
+// =========================
+let timeLeft = 25 * 60;
+let timerInterval = null;
+
+function updateTimer() {
+    const timeElement =
+        document.getElementById("time");
+
+    if (!timeElement) return;
+
+    const minutes =
+        Math.floor(timeLeft / 60);
+
+    const seconds =
+        timeLeft % 60;
+
+    timeElement.innerText =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+}
+
+function startTimer() {
+    if (timerInterval !== null) return;
+
+    timerInterval = setInterval(function () {
+
+        if (timeLeft > 0) {
+            timeLeft--;
+            updateTimer();
+        } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+
+            alert(
+                "Study session complete! 🎉"
+            );
+        }
+
+    }, 1000);
+}
+
+function pauseTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+
+    timeLeft = 25 * 60;
+
+    updateTimer();
+}
+
+
+// =========================
+// Quick Notes
+// =========================
+function saveNote() {
+    const noteText =
+        document.getElementById("noteText");
+
+    const status =
+        document.getElementById("noteStatus");
+
+    const note =
+        noteText.value.trim();
+
+    if (!note) {
+        status.innerText =
+            "Please write something first.";
+        return;
+    }
+
+    localStorage.setItem(
+        "studentUtilityNote",
+        note
+    );
+
+    status.innerText =
+        "Note saved successfully! ✅";
+}
+
+
+// =========================
+// Start Page
+// =========================
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        updateTimer();
+
+        const savedNote =
+            localStorage.getItem(
+                "studentUtilityNote"
+            );
+
+        if (savedNote) {
+            document.getElementById(
+                "noteText"
+            ).value = savedNote;
+        }
+    }
+);
+// =========================
+// DARK / LIGHT MODE
+// =========================
+
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+
+    const button = document.getElementById("themeToggle");
+
+    if (document.body.classList.contains("dark-mode")) {
+        button.innerText = "☀️ Light Mode";
+    } else {
+        button.innerText = "🌙 Dark Mode";
+    }
+}
