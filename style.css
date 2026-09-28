@@ -339,16 +339,19 @@ footer p {
         grid-template-columns: 1fr;
     }
 
-    .calculator,
+       .calculator,
     .planner,
     .timer,
     .notes {
         padding: 22px;
     }
+
+} /* MOBILE MEDIA END */
+
+
 /* =========================
    STEP 21 - FINAL POLISH
 ========================= */
-
 .calculator,
 .planner,
 .timer,
