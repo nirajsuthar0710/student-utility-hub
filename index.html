@@ -1,55 +1,316 @@
-/* =========================
-   DARK MODE
-========================= */
-
-body.dark-mode {
-    background: #0f172a;
-    color: #e2e8f0;
+function showMessage() {
+    document.getElementById("tools").scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
-body.dark-mode header {
-    background: #020617;
+
+// =========================
+// Percentage Calculator
+// =========================
+function calculatePercentage() {
+    const obtained = parseFloat(document.getElementById("obtained").value);
+    const total = parseFloat(document.getElementById("total").value);
+    const result = document.getElementById("result");
+
+    if (
+        isNaN(obtained) ||
+        isNaN(total) ||
+        total <= 0 ||
+        obtained < 0 ||
+        obtained > total
+    ) {
+        result.innerText = "Please enter valid marks.";
+        return;
+    }
+
+    const percentage = (obtained / total) * 100;
+
+    result.innerText =
+        "Your Percentage: " + percentage.toFixed(2) + "%";
 }
 
-body.dark-mode .hero {
-    background: linear-gradient(135deg, #1e293b, #172554);
+
+// =========================
+// Grade Calculator
+// =========================
+function calculateGrade() {
+    const percentage =
+        parseFloat(document.getElementById("gradeMarks").value);
+
+    const result = document.getElementById("gradeResult");
+
+    if (
+        isNaN(percentage) ||
+        percentage < 0 ||
+        percentage > 100
+    ) {
+        result.innerText =
+            "Please enter percentage between 0 and 100.";
+        return;
+    }
+
+    let grade;
+
+    if (percentage >= 90) {
+        grade = "A+";
+    } else if (percentage >= 80) {
+        grade = "A";
+    } else if (percentage >= 70) {
+        grade = "B";
+    } else if (percentage >= 60) {
+        grade = "C";
+    } else if (percentage >= 50) {
+        grade = "D";
+    } else if (percentage >= 33) {
+        grade = "E";
+    } else {
+        grade = "F";
+    }
+
+    result.innerText = "Your Grade: " + grade;
 }
 
-body.dark-mode .hero-content > p:not(.badge),
-body.dark-mode .section-subtitle,
-body.dark-mode .tool-card p {
-    color: #cbd5e1;
+
+// =========================
+// CGPA Calculator
+// =========================
+// CGPA Calculator
+// =========================
+// CGPA Calculator
+// =========================
+function calculateCGPA() {
+
+    const input = document.getElementById("cgpaInput");
+    const result = document.getElementById("cgpaResult");
+
+    const cgpa = parseFloat(input.value);
+
+    if (isNaN(cgpa)) {
+        result.innerText = "Please enter your CGPA.";
+        return;
+    }
+
+    if (cgpa < 0 || cgpa > 10) {
+        result.innerText = "CGPA must be between 0 and 10.";
+        return;
+    }
+
+    const percentage = cgpa * 9.5;
+
+    result.innerText =
+        "Approx. Percentage: " +
+        percentage.toFixed(2) +
+        "%";
+}
+// =========================
+// Exam Countdown
+// =========================
+function calculateCountdown() {
+    const dateValue =
+        document.getElementById("examDate").value;
+
+    const result =
+        document.getElementById("countdownResult");
+
+    if (!dateValue) {
+        result.innerText =
+            "Please select your exam date.";
+        return;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const examDate =
+        new Date(dateValue + "T00:00:00");
+
+    const difference = examDate - today;
+
+    const days = Math.ceil(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+    if (days > 0) {
+        result.innerText =
+            days + " days left 📚";
+    } else if (days === 0) {
+        result.innerText =
+            "Your exam is today! 🎯";
+    } else {
+        result.innerText =
+            "This exam date has passed.";
+    }
 }
 
-body.dark-mode .tool-card,
-body.dark-mode .calculator,
-body.dark-mode .planner,
-body.dark-mode .timer,
-body.dark-mode .notes {
-    background: #1e293b;
-    color: #e2e8f0;
+
+// =========================
+// Study Planner
+// =========================
+function addPlan() {
+    const subject =
+        document.getElementById("subject").value.trim();
+
+    const hours =
+        parseFloat(document.getElementById("hours").value);
+
+    const planList =
+        document.getElementById("planList");
+
+    if (
+        !subject ||
+        isNaN(hours) ||
+        hours <= 0
+    ) {
+        alert(
+            "Please enter subject and valid study hours."
+        );
+        return;
+    }
+
+    const plan =
+        document.createElement("div");
+
+    plan.style.marginTop = "10px";
+    plan.style.padding = "10px";
+    plan.style.background = "#eff6ff";
+    plan.style.borderRadius = "8px";
+
+    plan.innerText =
+        "📚 " +
+        subject +
+        " — " +
+        hours +
+        " hour(s)";
+
+    planList.appendChild(plan);
+
+    document.getElementById("subject").value = "";
+    document.getElementById("hours").value = "";
 }
 
-body.dark-mode input,
-body.dark-mode textarea {
-    background: #0f172a;
-    color: #e2e8f0;
-    border-color: #475569;
+
+// =========================
+// Study Timer
+// =========================
+let timeLeft = 25 * 60;
+let timerInterval = null;
+
+function updateTimer() {
+    const timeElement =
+        document.getElementById("time");
+
+    if (!timeElement) return;
+
+    const minutes =
+        Math.floor(timeLeft / 60);
+
+    const seconds =
+        timeLeft % 60;
+
+    timeElement.innerText =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
 }
 
-body.dark-mode input::placeholder,
-body.dark-mode textarea::placeholder {
-    color: #94a3b8;
+function startTimer() {
+    if (timerInterval !== null) return;
+
+    timerInterval = setInterval(function () {
+
+        if (timeLeft > 0) {
+            timeLeft--;
+            updateTimer();
+        } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+
+            alert(
+                "Study session complete! 🎉"
+            );
+        }
+
+    }, 1000);
 }
 
-body.dark-mode footer {
-    background: #020617;
+function pauseTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
 }
 
-body.dark-mode .tool-icon {
-    background: #172554;
+function resetTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+
+    timeLeft = 25 * 60;
+
+    updateTimer();
 }
 
-body.dark-mode #time {
-    color: #60a5fa;
+
+// =========================
+// Quick Notes
+// =========================
+function saveNote() {
+    const noteText =
+        document.getElementById("noteText");
+
+    const status =
+        document.getElementById("noteStatus");
+
+    const note =
+        noteText.value.trim();
+
+    if (!note) {
+        status.innerText =
+            "Please write something first.";
+        return;
+    }
+
+    localStorage.setItem(
+        "studentUtilityNote",
+        note
+    );
+
+    status.innerText =
+        "Note saved successfully! ✅";
+}
+
+
+// =========================
+// Start Page
+// =========================
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        updateTimer();
+
+        const savedNote =
+            localStorage.getItem(
+                "studentUtilityNote"
+            );
+
+        if (savedNote) {
+            document.getElementById(
+                "noteText"
+            ).value = savedNote;
+        }
+    }
+);
+// =========================
+// DARK / LIGHT MODE
+// =========================
+
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+
+    const button = document.getElementById("themeToggle");
+
+    if (document.body.classList.contains("dark-mode")) {
+        button.innerText = "☀️ Light Mode";
+    } else {
+        button.innerText = "🌙 Dark Mode";
+    }
 }
