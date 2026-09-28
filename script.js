@@ -176,40 +176,44 @@ function calculateCountdown() {
 // =========================
 function displayPlans() {
 
-    const planList =
-        document.getElementById("planList");
-
-    const totalHours =
-        document.getElementById("totalHours");
+    const planList = document.getElementById("planList");
+    const totalHours = document.getElementById("totalHours");
 
     if (!planList) return;
 
     planList.innerHTML = "";
 
     const plans =
-        JSON.parse(
-            localStorage.getItem("studyPlans")
-        ) || [];
+        JSON.parse(localStorage.getItem("studyPlans")) || [];
 
     let total = 0;
+    let completed = 0;
 
     plans.forEach(function (plan, index) {
 
-        total += Number(plan.hours);
+        const hours = Number(plan.hours);
+
+        total += hours;
+
+        if (plan.completed === true) {
+            completed += hours;
+        }
 
         const box = document.createElement("div");
 
         box.style.marginTop = "10px";
         box.style.padding = "12px";
-        box.style.background = plan.completed
-            ? "#dcfce7"
-            : "#eff6ff";
-
         box.style.borderRadius = "8px";
         box.style.display = "flex";
         box.style.justifyContent = "space-between";
         box.style.alignItems = "center";
         box.style.gap = "10px";
+
+        if (plan.completed === true) {
+            box.style.background = "#dcfce7";
+        } else {
+            box.style.background = "#eff6ff";
+        }
 
         const text = document.createElement("span");
 
@@ -217,11 +221,10 @@ function displayPlans() {
             (plan.completed ? "✅ " : "📚 ") +
             plan.subject +
             " — " +
-            plan.hours +
+            hours +
             " hour(s)";
 
-        const doneButton =
-            document.createElement("button");
+        const doneButton = document.createElement("button");
 
         doneButton.type = "button";
 
@@ -241,18 +244,29 @@ function displayPlans() {
             displayPlans();
         };
 
-        const deleteButton =
-            document.createElement("button");
+
+        const deleteButton = document.createElement("button");
 
         deleteButton.type = "button";
         deleteButton.innerText = "Delete";
 
         deleteButton.onclick = function () {
-            deletePlan(index);
+
+            plans.splice(index, 1);
+
+            localStorage.setItem(
+                "studyPlans",
+                JSON.stringify(plans)
+            );
+
+            displayPlans();
         };
 
-        const buttons =
-            document.createElement("div");
+
+        const buttons = document.createElement("div");
+
+        buttons.style.display = "flex";
+        buttons.style.gap = "6px";
 
         buttons.appendChild(doneButton);
         buttons.appendChild(deleteButton);
@@ -263,11 +277,19 @@ function displayPlans() {
         planList.appendChild(box);
     });
 
+
+    const remaining = total - completed;
+
+
     if (totalHours) {
 
-        totalHours.innerText =
-            "Total Study Hours: " +
-            total.toFixed(2);
+        totalHours.innerHTML =
+            "📚 Total Hours: " +
+            total.toFixed(2) +
+            "<br>✅ Completed Hours: " +
+            completed.toFixed(2) +
+            "<br>⏳ Remaining Hours: " +
+            remaining.toFixed(2);
     }
 }
 
