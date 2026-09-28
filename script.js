@@ -467,7 +467,41 @@ function toggleTheme() {
         );
     }
 }
+// =========================
+// FEEDBACK
+// =========================
 
+function sendFeedback() {
+
+    const name =
+        document.getElementById("feedbackName").value.trim();
+
+    const feedback =
+        document.getElementById("feedbackText").value.trim();
+
+    const status =
+        document.getElementById("feedbackStatus");
+
+    if (!name || !feedback) {
+        status.innerText =
+            "Please enter your name and feedback.";
+        return;
+    }
+
+    localStorage.setItem(
+        "studentFeedback",
+        JSON.stringify({
+            name: name,
+            feedback: feedback
+        })
+    );
+
+    status.innerText =
+        "Thank you for your feedback! ✅";
+
+    document.getElementById("feedbackName").value = "";
+    document.getElementById("feedbackText").value = "";
+}
 
 // =========================
 // PAGE START
