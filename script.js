@@ -220,6 +220,71 @@ function calculateCountdown() {
 
 
 // =========================
+// DASHBOARD UPDATE
+// =========================
+
+function updateDashboard() {
+
+    const plans =
+        JSON.parse(
+            localStorage.getItem("studyPlans")
+        ) || [];
+
+    let total = 0;
+    let completed = 0;
+
+    plans.forEach(function (plan) {
+
+        const hours =
+            Number(plan.hours) || 0;
+
+        total += hours;
+
+        if (plan.completed === true) {
+            completed += hours;
+        }
+    });
+
+    const progress =
+        total > 0
+            ? (completed / total) * 100
+            : 0;
+
+    const dashboardHours =
+        document.getElementById("dashboardHours");
+
+    const dashboardCompleted =
+        document.getElementById("dashboardCompleted");
+
+    const dashboardPlans =
+        document.getElementById("dashboardPlans");
+
+    const dashboardProgress =
+        document.getElementById("dashboardProgress");
+
+    if (dashboardHours) {
+        dashboardHours.innerText =
+            total.toFixed(2);
+    }
+
+    if (dashboardCompleted) {
+        dashboardCompleted.innerText =
+            completed.toFixed(2);
+    }
+
+    if (dashboardPlans) {
+        dashboardPlans.innerText =
+            plans.length;
+    }
+
+    if (dashboardProgress) {
+        dashboardProgress.innerText =
+            progress.toFixed(0) + "%";
+    }
+}
+
+
+// =========================
 // STUDY PLANNER
 // =========================
 
@@ -254,7 +319,7 @@ function displayPlans() {
     plans.forEach(function (plan, index) {
 
         const hours =
-            Number(plan.hours);
+            Number(plan.hours) || 0;
 
         total += hours;
 
@@ -317,8 +382,8 @@ function displayPlans() {
                 );
 
                 displayPlans();
+                updateDashboard();
             };
-
 
         const deleteButton =
             document.createElement("button");
@@ -337,8 +402,8 @@ function displayPlans() {
                 );
 
                 displayPlans();
+                updateDashboard();
             };
-
 
         buttons.appendChild(doneButton);
         buttons.appendChild(deleteButton);
@@ -365,8 +430,6 @@ function displayPlans() {
     }
 
 
-    // Progress percentage
-
     const progress =
         total > 0
             ? (completed / total) * 100
@@ -385,42 +448,11 @@ function displayPlans() {
         progressFill.style.width =
             progress.toFixed(0) + "%";
     }
-}
-// =========================
-// DASHBOARD UPDATE
-// =========================
 
-const dashboardHours =
-    document.getElementById("dashboardHours");
-
-const dashboardCompleted =
-    document.getElementById("dashboardCompleted");
-
-const dashboardPlans =
-    document.getElementById("dashboardPlans");
-
-const dashboardProgress =
-    document.getElementById("dashboardProgress");
-
-if (dashboardHours) {
-    dashboardHours.innerText =
-        total.toFixed(2);
+    // Update Dashboard
+    updateDashboard();
 }
 
-if (dashboardCompleted) {
-    dashboardCompleted.innerText =
-        completed.toFixed(2);
-}
-
-if (dashboardPlans) {
-    dashboardPlans.innerText =
-        plans.length;
-}
-
-if (dashboardProgress) {
-    dashboardProgress.innerText =
-        progress.toFixed(0) + "%";
-}
 
 // =========================
 // ADD STUDY PLAN
@@ -479,6 +511,7 @@ function addPlan() {
     hoursInput.value = "";
 
     displayPlans();
+    updateDashboard();
 }
 
 
@@ -508,6 +541,7 @@ function deletePlan(index) {
     );
 
     displayPlans();
+    updateDashboard();
 }
 
 
@@ -716,8 +750,6 @@ function sendFeedback() {
         return;
     }
 
-    // Save locally in browser
-
     const feedbackList =
         JSON.parse(
             localStorage.getItem(
@@ -758,13 +790,13 @@ document.addEventListener(
     function () {
 
         // Timer
-
         updateTimer();
 
-
         // Study Planner
-
         displayPlans();
+
+        // Dashboard
+        updateDashboard();
 
 
         // Load saved note
@@ -783,7 +815,6 @@ document.addEventListener(
             savedNote &&
             noteText
         ) {
-
             noteText.value =
                 savedNote;
         }
