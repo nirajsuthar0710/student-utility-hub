@@ -1110,3 +1110,79 @@ body.dark-mode .dashboard-card p {
         grid-template-columns: 1fr;
     }
 }
+/* =========================
+   STEP 67C - MOBILE POLISH
+========================= */
+
+@media (max-width: 750px) {
+
+    header {
+        padding: 16px 20px;
+    }
+
+    .brand h1 {
+        font-size: 20px;
+    }
+
+    nav {
+        width: 100%;
+        gap: 10px;
+    }
+
+    nav a,
+    #themeToggle {
+        font-size: 13px;
+    }
+
+    #themeToggle {
+        width: auto;
+        margin-top: 0;
+        padding: 8px 12px;
+    }
+
+    .hero {
+        padding: 35px 20px;
+        border-radius: 18px;
+    }
+
+    .hero h2 {
+        font-size: 32px;
+    }
+
+    .hero-visual {
+        padding: 20px;
+        font-size: 70px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-container {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator,
+    .planner,
+    .timer,
+    .notes,
+    .about,
+    .contact,
+    .support {
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+
+    input,
+    textarea {
+        font-size: 16px;
+    }
+
+    button {
+        min-height: 44px;
+    }
+
+    #time {
+        font-size: 42px;
+    }
+}
