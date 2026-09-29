@@ -386,7 +386,41 @@ function displayPlans() {
             progress.toFixed(0) + "%";
     }
 }
+// =========================
+// DASHBOARD UPDATE
+// =========================
 
+const dashboardHours =
+    document.getElementById("dashboardHours");
+
+const dashboardCompleted =
+    document.getElementById("dashboardCompleted");
+
+const dashboardPlans =
+    document.getElementById("dashboardPlans");
+
+const dashboardProgress =
+    document.getElementById("dashboardProgress");
+
+if (dashboardHours) {
+    dashboardHours.innerText =
+        total.toFixed(2);
+}
+
+if (dashboardCompleted) {
+    dashboardCompleted.innerText =
+        completed.toFixed(2);
+}
+
+if (dashboardPlans) {
+    dashboardPlans.innerText =
+        plans.length;
+}
+
+if (dashboardProgress) {
+    dashboardProgress.innerText =
+        progress.toFixed(0) + "%";
+}
 
 // =========================
 // ADD STUDY PLAN
