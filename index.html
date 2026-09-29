@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,12 +7,14 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <<meta name="description"
-content="Student Utility Hub provides free student tools including percentage, grade and CGPA calculators, exam countdown, study planner, timer and quick notes.">
-    <meta name="google-site-verification" content="WSGTvMQneNK2S_D_7xHxpLK2YnnY4hCCUYfjPoecgow" />
-    
+    <!-- SEO -->
+    <title>Student Utility Hub | Free Student Tools & Study Planner</title>
+
+    <meta name="description"
+        content="Student Utility Hub offers free student tools including percentage calculator, grade calculator, CGPA calculator, exam countdown, study planner, study timer and quick notes.">
+
     <meta name="keywords"
-        content="student tools, percentage calculator, CGPA calculator, grade calculator, study planner, study timer">
+        content="student tools, percentage calculator, CGPA calculator, grade calculator, exam countdown, study planner, study timer, student calculator">
 
     <meta name="author"
         content="Student Utility Hub">
@@ -21,39 +22,107 @@ content="Student Utility Hub provides free student tools including percentage, g
     <meta name="robots"
         content="index, follow">
 
-   <title>Student Utility Hub - Free Student Tools & Study Calculator</title>
+    <meta name="googlebot"
+        content="index, follow">
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification"
+        content="WSGTvMQneNK2S_D_7xHxpLK2YnnY4hCCUYfjPoecgow">
+
+    <!-- Theme -->
+    <meta name="theme-color"
+        content="#17233a">
+
+    <!-- Canonical URL -->
+    <link rel="canonical"
+        href="https://nirajsuthar0710.github.io/student-utility-hub/">
+
+    <!-- Open Graph -->
+    <meta property="og:title"
+        content="Student Utility Hub | Free Student Tools">
+
+    <meta property="og:description"
+        content="Free calculators, study planner, study timer, exam countdown and quick notes for students.">
+
+    <meta property="og:type"
+        content="website">
+
+    <meta property="og:url"
+        content="https://nirajsuthar0710.github.io/student-utility-hub/">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet"
+        href="style.css">
+
 </head>
 
+
 <body>
+
+<!-- Accessibility -->
+<a href="#main-content"
+   class="skip-link">
+    Skip to content
+</a>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
     <div class="brand">
 
-        <div class="brand-icon">🎓</div>
+        <div class="brand-icon">
+            🎓
+        </div>
 
         <div>
-            <h1>Student<span>Utility</span></h1>
-            <p>Plan • Learn • Grow</p>
+
+            <h1>
+                Student<span>Utility</span>
+            </h1>
+
+            <p>
+                Plan • Learn • Grow
+            </p>
+
         </div>
 
     </div>
 
-    <nav>
 
-        <a href="#home">Home</a>
-        <a href="#tools">Tools</a>
-        <a href="#notes">Notes</a>
-        <a href="#about">About</a>
-        <a href="#contact">Feedback</a>
+    <nav aria-label="Main navigation">
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#tools">
+            Tools
+        </a>
+
+        <a href="#notes">
+            Notes
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#contact">
+            Feedback
+        </a>
 
         <button
             id="themeToggle"
             type="button"
-            onclick="toggleTheme()">
+            onclick="toggleTheme()"
+            aria-label="Toggle dark mode">
+
             🌙 Dark Mode
+
         </button>
 
     </nav>
@@ -61,58 +130,108 @@ content="Student Utility Hub provides free student tools including percentage, g
 </header>
 
 
-<main>
 
-    <!-- HERO -->
+<!-- =========================
+     MAIN
+========================= -->
 
-    <section class="hero" id="home">
+<main id="main-content">
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section
+        class="hero"
+        id="home"
+        aria-labelledby="hero-title">
+
 
         <div class="hero-content">
 
             <span class="badge">
-                📚 Made for Students
+                📚 Free Student Tools
             </span>
 
-            <h2>
+
+            <h2 id="hero-title">
+
                 Study Smarter.<br>
+
                 Achieve More. 🚀
+
             </h2>
 
+
             <p>
-                Simple and useful tools to help students
-                calculate, plan and study better.
+
+                Simple and useful tools designed to help
+                students calculate marks, plan study time,
+                track exams and stay organized.
+
             </p>
 
-            <a href="#tools" class="hero-button">
+
+            <a
+                href="#tools"
+                class="hero-button">
+
                 Explore Tools →
+
             </a>
 
         </div>
 
-        <div class="hero-visual">
+
+        <div
+            class="hero-visual"
+            aria-hidden="true">
+
             🎓
-            <span>📚</span>
-            <span>✏️</span>
+
+            <span>
+                📚
+            </span>
+
+            <span>
+                ✏️
+            </span>
+
         </div>
 
     </section>
 
 
-    <!-- TOOLS -->
 
-    <section class="tools" id="tools">
+    <!-- =========================
+         TOOLS
+    ========================= -->
 
-        <h2>Our Tools</h2>
+    <section
+        class="tools"
+        id="tools"
+        aria-labelledby="tools-title">
+
+
+        <h2 id="tools-title">
+            Free Student Tools
+        </h2>
+
 
         <p class="section-subtitle">
+
             Everything you need for smarter study
+
         </p>
+
 
         <div class="tool-container">
 
-            <!-- PERCENTAGE -->
 
-            <div class="tool-card">
+            <!-- Percentage -->
+
+            <article class="tool-card">
 
                 <div class="tool-icon">
                     🧮
@@ -131,12 +250,13 @@ content="Student Utility Hub provides free student tools including percentage, g
                     Open Tool →
                 </a>
 
-            </div>
+            </article>
 
 
-            <!-- GRADE -->
 
-            <div class="tool-card">
+            <!-- Grade -->
+
+            <article class="tool-card">
 
                 <div class="tool-icon">
                     🎯
@@ -155,12 +275,13 @@ content="Student Utility Hub provides free student tools including percentage, g
                     Open Tool →
                 </a>
 
-            </div>
+            </article>
+
 
 
             <!-- CGPA -->
 
-            <div class="tool-card">
+            <article class="tool-card">
 
                 <div class="tool-icon">
                     🎓
@@ -171,7 +292,7 @@ content="Student Utility Hub provides free student tools including percentage, g
                 </h3>
 
                 <p>
-                    Convert your CGPA into
+                    Convert your CGPA into an
                     approximate percentage.
                 </p>
 
@@ -179,12 +300,13 @@ content="Student Utility Hub provides free student tools including percentage, g
                     Open Tool →
                 </a>
 
-            </div>
+            </article>
 
 
-            <!-- COUNTDOWN -->
 
-            <div class="tool-card">
+            <!-- Exam Countdown -->
+
+            <article class="tool-card">
 
                 <div class="tool-icon">
                     📅
@@ -203,12 +325,13 @@ content="Student Utility Hub provides free student tools including percentage, g
                     Open Tool →
                 </a>
 
-            </div>
+            </article>
 
 
-            <!-- PLANNER -->
 
-            <div class="tool-card">
+            <!-- Study Planner -->
+
+            <article class="tool-card">
 
                 <div class="tool-icon">
                     📚
@@ -227,12 +350,13 @@ content="Student Utility Hub provides free student tools including percentage, g
                     Open Tool →
                 </a>
 
-            </div>
+            </article>
 
 
-            <!-- TIMER -->
 
-            <div class="tool-card">
+            <!-- Study Timer -->
+
+            <article class="tool-card">
 
                 <div class="tool-icon">
                     ⏱️
@@ -251,76 +375,128 @@ content="Student Utility Hub provides free student tools including percentage, g
                     Open Tool →
                 </a>
 
-            </div>
+            </article>
 
         </div>
 
     </section>
 
 
-    <!-- PERCENTAGE CALCULATOR -->
 
-    <section class="calculator"
-        id="percentage">
+    <!-- =========================
+         PERCENTAGE CALCULATOR
+    ========================= -->
 
-        <h2>
+    <section
+        class="calculator"
+        id="percentage"
+        aria-labelledby="percentage-title">
+
+        <h2 id="percentage-title">
             🧮 Percentage Calculator
         </h2>
+
+
+        <p>
+            Enter your obtained and total marks
+            to calculate your percentage.
+        </p>
+
 
         <input
             type="number"
             id="obtained"
-            placeholder="Marks Obtained">
+            placeholder="Marks Obtained"
+            min="0"
+            aria-label="Marks obtained">
+
 
         <input
             type="number"
             id="total"
-            placeholder="Total Marks">
+            placeholder="Total Marks"
+            min="1"
+            aria-label="Total marks">
+
 
         <button
             type="button"
             onclick="calculatePercentage()">
+
             Calculate
+
         </button>
+
 
         <h3 id="result"></h3>
 
     </section>
 
 
-    <!-- GRADE CALCULATOR -->
 
-    <section class="calculator"
-        id="grade">
+    <!-- =========================
+         GRADE CALCULATOR
+    ========================= -->
 
-        <h2>
+    <section
+        class="calculator"
+        id="grade"
+        aria-labelledby="grade-title">
+
+        <h2 id="grade-title">
             🎯 Grade Calculator
         </h2>
+
+
+        <p>
+            Enter your percentage to find your grade.
+        </p>
+
 
         <input
             type="number"
             id="gradeMarks"
-            placeholder="Enter Percentage">
+            placeholder="Enter Percentage"
+            min="0"
+            max="100"
+            step="0.01"
+            aria-label="Percentage">
+
 
         <button
             type="button"
             onclick="calculateGrade()">
+
             Check Grade
+
         </button>
+
 
         <h3 id="gradeResult"></h3>
 
     </section>
 
 
-    <!-- CGPA CALCULATOR -->
 
-    <section class="calculator"
-        id="cgpa-section">
+    <!-- =========================
+         CGPA CALCULATOR
+    ========================= -->
 
-        <h2>
+    <section
+        class="calculator"
+        id="cgpa-section"
+        aria-labelledby="cgpa-title">
+
+        <h2 id="cgpa-title">
             🎓 CGPA Calculator
         </h2>
+
+
+        <p>
+            Convert your CGPA into an approximate
+            percentage.
+        </p>
+
 
         <input
             type="number"
@@ -328,73 +504,118 @@ content="Student Utility Hub provides free student tools including percentage, g
             min="0"
             max="10"
             step="0.01"
-            placeholder="Enter CGPA">
+            placeholder="Enter CGPA"
+            aria-label="CGPA">
+
 
         <button
             type="button"
             onclick="calculateCGPA()">
+
             Calculate Percentage
+
         </button>
+
 
         <h3 id="cgpaResult"></h3>
 
     </section>
 
 
-    <!-- EXAM COUNTDOWN -->
 
-    <section class="calculator"
-        id="countdown">
+    <!-- =========================
+         EXAM COUNTDOWN
+    ========================= -->
 
-        <h2>
+    <section
+        class="calculator"
+        id="countdown"
+        aria-labelledby="countdown-title">
+
+        <h2 id="countdown-title">
             📅 Exam Countdown
         </h2>
 
+
+        <p>
+            Select your exam date to see how many
+            days are remaining.
+        </p>
+
+
         <input
             type="date"
-            id="examDate">
+            id="examDate"
+            aria-label="Exam date">
+
 
         <button
             type="button"
             onclick="calculateCountdown()">
+
             Check Days Left
+
         </button>
+
 
         <h3 id="countdownResult"></h3>
 
     </section>
 
 
-    <!-- STUDY PLANNER -->
 
-    <section class="planner"
-        id="planner">
+    <!-- =========================
+         STUDY PLANNER
+    ========================= -->
 
-        <h2>
+    <section
+        class="planner"
+        id="planner"
+        aria-labelledby="planner-title">
+
+        <h2 id="planner-title">
             📚 Study Planner
         </h2>
+
+
+        <p>
+            Add subjects and study hours to create
+            your personal study plan.
+        </p>
+
 
         <input
             type="text"
             id="subject"
-            placeholder="Enter Subject">
+            placeholder="Enter Subject"
+            aria-label="Subject">
+
 
         <input
             type="number"
             id="hours"
-            placeholder="Study Hours">
+            placeholder="Study Hours"
+            min="0"
+            step="0.5"
+            aria-label="Study hours">
+
 
         <button
             type="button"
             onclick="addPlan()">
+
             Add Plan
+
         </button>
 
+
         <div id="planList"></div>
+
 
         <h3 id="totalHours">
             Total Study Hours: 0
         </h3>
+
 
         <div class="progress-box">
 
@@ -402,8 +623,11 @@ content="Student Utility Hub provides free student tools including percentage, g
                 📊 Study Progress: 0%
             </p>
 
+
             <div class="progress-bar">
+
                 <div id="progressFill"></div>
+
             </div>
 
         </div>
@@ -411,80 +635,128 @@ content="Student Utility Hub provides free student tools including percentage, g
     </section>
 
 
-    <!-- TIMER -->
 
-    <section class="timer"
-        id="timer">
+    <!-- =========================
+         STUDY TIMER
+    ========================= -->
 
-        <h2>
+    <section
+        class="timer"
+        id="timer"
+        aria-labelledby="timer-title">
+
+        <h2 id="timer-title">
             ⏱️ Study Timer
         </h2>
+
+
+        <p>
+            Use a simple 25-minute focus session
+            for distraction-free study.
+        </p>
+
 
         <div id="time">
             25:00
         </div>
 
+
         <button
             type="button"
             onclick="startTimer()">
+
             Start
+
         </button>
+
 
         <button
             type="button"
             onclick="pauseTimer()">
+
             Pause
+
         </button>
+
 
         <button
             type="button"
             onclick="resetTimer()">
+
             Reset
+
         </button>
 
     </section>
 
 
-    <!-- NOTES -->
 
-    <section class="notes"
-        id="notes">
+    <!-- =========================
+         QUICK NOTES
+    ========================= -->
 
-        <h2>
+    <section
+        class="notes"
+        id="notes"
+        aria-labelledby="notes-title">
+
+        <h2 id="notes-title">
             📝 Quick Notes
         </h2>
 
+
+        <p>
+            Write and save quick study notes
+            directly in your browser.
+        </p>
+
+
         <textarea
             id="noteText"
-            placeholder="Write your notes..."></textarea>
+            placeholder="Write your notes..."
+            aria-label="Quick notes"></textarea>
+
 
         <button
             type="button"
             onclick="saveNote()">
+
             Save Note
+
         </button>
+
 
         <p id="noteStatus"></p>
 
     </section>
 
 
-    <!-- ABOUT SECTION -->
 
-    <section class="about"
-        id="about">
+    <!-- =========================
+         ABOUT
+    ========================= -->
 
-        <h2>
+    <section
+        class="about"
+        id="about"
+        aria-labelledby="about-title">
+
+        <h2 id="about-title">
             Why Student Utility Hub?
         </h2>
 
+
         <p>
-            Student Utility Hub is a simple collection of free
-            tools designed to help students study, plan and
-            manage their time better.
+
+            Student Utility Hub is a simple collection
+            of free tools designed to help students
+            study, plan and manage their time better.
+
         </p>
 
+
         <div class="about-cards">
+
 
             <div class="about-card">
 
@@ -493,7 +765,8 @@ content="Student Utility Hub provides free student tools including percentage, g
                 </h3>
 
                 <p>
-                    Useful study tools without complicated setup.
+                    Useful study tools without
+                    complicated setup.
                 </p>
 
             </div>
@@ -506,7 +779,8 @@ content="Student Utility Hub provides free student tools including percentage, g
                 </h3>
 
                 <p>
-                    Easy-to-use tools made for everyday student needs.
+                    Easy-to-use tools made for
+                    everyday student needs.
                 </p>
 
             </div>
@@ -519,7 +793,8 @@ content="Student Utility Hub provides free student tools including percentage, g
                 </h3>
 
                 <p>
-                    Built around calculators, planning and study habits.
+                    Built around calculators,
+                    planning and study habits.
                 </p>
 
             </div>
@@ -529,21 +804,33 @@ content="Student Utility Hub provides free student tools including percentage, g
     </section>
 
 
-    <!-- SUPPORT SECTION -->
 
-    <section class="support">
+    <!-- =========================
+         SUPPORT
+    ========================= -->
 
-        <h2>
+    <section
+        class="support"
+        aria-labelledby="support-title">
+
+        <h2 id="support-title">
             💙 Support Student Utility Hub
         </h2>
 
-        <p>
-            Student Utility Hub is free and made to help students
-            study, plan and learn better.
-        </p>
 
         <p>
+
+            Student Utility Hub is free and made
+            to help students study, plan and
+            learn better.
+
+        </p>
+
+
+        <p>
+
             More useful features are coming soon! 🚀
+
         </p>
 
     </section>
@@ -551,41 +838,60 @@ content="Student Utility Hub provides free student tools including percentage, g
 </main>
 
 
-<!-- CONTACT / FEEDBACK -->
 
-<section class="contact"
-    id="contact">
+<!-- =========================
+     CONTACT / FEEDBACK
+========================= -->
 
-    <h2>
+<section
+    class="contact"
+    id="contact"
+    aria-labelledby="contact-title">
+
+    <h2 id="contact-title">
         💬 Feedback
     </h2>
 
+
     <p>
+
         Have a suggestion or feedback?
         Let us know!
+
     </p>
+
 
     <input
         type="text"
         id="feedbackName"
-        placeholder="Your Name">
+        placeholder="Your Name"
+        aria-label="Your name">
+
 
     <textarea
         id="feedbackText"
-        placeholder="Write your feedback..."></textarea>
+        placeholder="Write your feedback..."
+        aria-label="Feedback"></textarea>
+
 
     <button
         type="button"
         onclick="sendFeedback()">
+
         Send Feedback
+
     </button>
+
 
     <p id="feedbackStatus"></p>
 
 </section>
 
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -595,34 +901,51 @@ content="Student Utility Hub provides free student tools including percentage, g
             🎓 StudentUtility
         </h3>
 
+
         <p>
             Plan • Learn • Grow
         </p>
 
     </div>
 
+
+    <div class="footer-links">
+
+        <a href="privacy.html">
+            Privacy Policy
+        </a>
+
+
+        <a href="terms.html">
+            Terms & Conditions
+        </a>
+
+
+        <a href="disclaimer.html">
+            Disclaimer
+        </a>
+
+    </div>
+
+
     <p>
         © 2026 Student Utility Hub
     </p>
 
+
     <p>
         Keep Going 🙂
     </p>
-<div class="footer-links">
 
-    <a href="privacy.html">Privacy Policy</a>
-
-    <a href="terms.html">Terms & Conditions</a>
-
-    <a href="disclaimer.html">Disclaimer</a>
-
-</div>
 </footer>
 
 
+
+<!-- JavaScript -->
+
 <script src="script.js"></script>
+
 
 </body>
 
 </html>
-```
