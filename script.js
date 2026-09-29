@@ -1,23 +1,48 @@
+// =========================
+// Student Utility Hub
+// Final Script
+// =========================
+
+
+// =========================
+// HERO
+// =========================
+
 function showMessage() {
-    document.getElementById("tools").scrollIntoView({
-        behavior: "smooth"
-    });
+    const tools = document.getElementById("tools");
+
+    if (tools) {
+        tools.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
 }
 
 
 // =========================
-// Percentage Calculator
+// PERCENTAGE CALCULATOR
 // =========================
 
 function calculatePercentage() {
-    const obtained =
-        parseFloat(document.getElementById("obtained").value);
 
-    const total =
-        parseFloat(document.getElementById("total").value);
+    const obtainedInput =
+        document.getElementById("obtained");
+
+    const totalInput =
+        document.getElementById("total");
 
     const result =
         document.getElementById("result");
+
+    if (!obtainedInput || !totalInput || !result) {
+        return;
+    }
+
+    const obtained =
+        parseFloat(obtainedInput.value);
+
+    const total =
+        parseFloat(totalInput.value);
 
     if (
         isNaN(obtained) ||
@@ -26,11 +51,13 @@ function calculatePercentage() {
         obtained < 0 ||
         obtained > total
     ) {
-        result.innerText = "Please enter valid marks.";
+        result.innerText =
+            "Please enter valid marks.";
         return;
     }
 
-    const percentage = (obtained / total) * 100;
+    const percentage =
+        (obtained / total) * 100;
 
     result.innerText =
         "Your Percentage: " +
@@ -40,15 +67,23 @@ function calculatePercentage() {
 
 
 // =========================
-// Grade Calculator
+// GRADE CALCULATOR
 // =========================
 
 function calculateGrade() {
-    const percentage =
-        parseFloat(document.getElementById("gradeMarks").value);
+
+    const input =
+        document.getElementById("gradeMarks");
 
     const result =
         document.getElementById("gradeResult");
+
+    if (!input || !result) {
+        return;
+    }
+
+    const percentage =
+        parseFloat(input.value);
 
     if (
         isNaN(percentage) ||
@@ -84,7 +119,7 @@ function calculateGrade() {
 
 
 // =========================
-// CGPA Calculator
+// CGPA CALCULATOR
 // =========================
 
 function calculateCGPA() {
@@ -94,6 +129,10 @@ function calculateCGPA() {
 
     const result =
         document.getElementById("cgpaResult");
+
+    if (!input || !result) {
+        return;
+    }
 
     const cgpa =
         parseFloat(input.value);
@@ -110,7 +149,8 @@ function calculateCGPA() {
         return;
     }
 
-    const percentage = cgpa * 9.5;
+    const percentage =
+        cgpa * 9.5;
 
     result.innerText =
         "Approx. Percentage: " +
@@ -120,16 +160,23 @@ function calculateCGPA() {
 
 
 // =========================
-// Exam Countdown
+// EXAM COUNTDOWN
 // =========================
 
 function calculateCountdown() {
 
-    const dateValue =
-        document.getElementById("examDate").value;
+    const dateInput =
+        document.getElementById("examDate");
 
     const result =
         document.getElementById("countdownResult");
+
+    if (!dateInput || !result) {
+        return;
+    }
+
+    const dateValue =
+        dateInput.value;
 
     if (!dateValue) {
         result.innerText =
@@ -137,7 +184,8 @@ function calculateCountdown() {
         return;
     }
 
-    const today = new Date();
+    const today =
+        new Date();
 
     today.setHours(0, 0, 0, 0);
 
@@ -174,24 +222,39 @@ function calculateCountdown() {
 // =========================
 // STUDY PLANNER
 // =========================
+
 function displayPlans() {
 
-    const planList = document.getElementById("planList");
-    const totalHours = document.getElementById("totalHours");
+    const planList =
+        document.getElementById("planList");
 
-    if (!planList) return;
+    const totalHours =
+        document.getElementById("totalHours");
+
+    const progressText =
+        document.getElementById("progressText");
+
+    const progressFill =
+        document.getElementById("progressFill");
+
+    if (!planList) {
+        return;
+    }
 
     planList.innerHTML = "";
 
     const plans =
-        JSON.parse(localStorage.getItem("studyPlans")) || [];
+        JSON.parse(
+            localStorage.getItem("studyPlans")
+        ) || [];
 
     let total = 0;
     let completed = 0;
 
     plans.forEach(function (plan, index) {
 
-        const hours = Number(plan.hours);
+        const hours =
+            Number(plan.hours);
 
         total += hours;
 
@@ -199,7 +262,8 @@ function displayPlans() {
             completed += hours;
         }
 
-        const box = document.createElement("div");
+        const box =
+            document.createElement("div");
 
         box.style.marginTop = "10px";
         box.style.padding = "12px";
@@ -208,14 +272,15 @@ function displayPlans() {
         box.style.justifyContent = "space-between";
         box.style.alignItems = "center";
         box.style.gap = "10px";
+        box.style.flexWrap = "wrap";
 
-        if (plan.completed === true) {
-            box.style.background = "#dcfce7";
-        } else {
-            box.style.background = "#eff6ff";
-        }
+        box.style.background =
+            plan.completed
+                ? "#dcfce7"
+                : "#eff6ff";
 
-        const text = document.createElement("span");
+        const text =
+            document.createElement("span");
 
         text.innerText =
             (plan.completed ? "✅ " : "📚 ") +
@@ -224,49 +289,56 @@ function displayPlans() {
             hours +
             " hour(s)";
 
-        const doneButton = document.createElement("button");
+        const buttons =
+            document.createElement("div");
+
+        buttons.style.display = "flex";
+        buttons.style.gap = "6px";
+
+        const doneButton =
+            document.createElement("button");
 
         doneButton.type = "button";
 
         doneButton.innerText =
-            plan.completed ? "Undo" : "Done";
+            plan.completed
+                ? "Undo"
+                : "Done";
 
-        doneButton.onclick = function () {
+        doneButton.onclick =
+            function () {
 
-            plans[index].completed =
-                !plans[index].completed;
+                plans[index].completed =
+                    !plans[index].completed;
 
-            localStorage.setItem(
-                "studyPlans",
-                JSON.stringify(plans)
-            );
+                localStorage.setItem(
+                    "studyPlans",
+                    JSON.stringify(plans)
+                );
 
-            displayPlans();
-        };
+                displayPlans();
+            };
 
 
-        const deleteButton = document.createElement("button");
+        const deleteButton =
+            document.createElement("button");
 
         deleteButton.type = "button";
         deleteButton.innerText = "Delete";
 
-        deleteButton.onclick = function () {
+        deleteButton.onclick =
+            function () {
 
-            plans.splice(index, 1);
+                plans.splice(index, 1);
 
-            localStorage.setItem(
-                "studyPlans",
-                JSON.stringify(plans)
-            );
+                localStorage.setItem(
+                    "studyPlans",
+                    JSON.stringify(plans)
+                );
 
-            displayPlans();
-        };
+                displayPlans();
+            };
 
-
-        const buttons = document.createElement("div");
-
-        buttons.style.display = "flex";
-        buttons.style.gap = "6px";
 
         buttons.appendChild(doneButton);
         buttons.appendChild(deleteButton);
@@ -278,8 +350,8 @@ function displayPlans() {
     });
 
 
-    const remaining = total - completed;
-
+    const remaining =
+        total - completed;
 
     if (totalHours) {
 
@@ -291,7 +363,31 @@ function displayPlans() {
             "<br>⏳ Remaining Hours: " +
             remaining.toFixed(2);
     }
+
+
+    // Progress percentage
+
+    const progress =
+        total > 0
+            ? (completed / total) * 100
+            : 0;
+
+    if (progressText) {
+
+        progressText.innerText =
+            "📊 Study Progress: " +
+            progress.toFixed(0) +
+            "%";
+    }
+
+    if (progressFill) {
+
+        progressFill.style.width =
+            progress.toFixed(0) + "%";
+    }
 }
+
+
 // =========================
 // ADD STUDY PLAN
 // =========================
@@ -304,24 +400,40 @@ function addPlan() {
     const hoursInput =
         document.getElementById("hours");
 
+    if (!subjectInput || !hoursInput) {
+        return;
+    }
+
     const subject =
         subjectInput.value.trim();
 
     const hours =
         parseFloat(hoursInput.value);
 
-    if (!subject || isNaN(hours) || hours <= 0) {
-        alert("Please enter subject and valid study hours.");
+    if (
+        !subject ||
+        isNaN(hours) ||
+        hours <= 0
+    ) {
+        alert(
+            "Please enter subject and valid study hours."
+        );
         return;
     }
 
     const plans =
-        JSON.parse(localStorage.getItem("studyPlans")) || [];
+        JSON.parse(
+            localStorage.getItem("studyPlans")
+        ) || [];
 
     plans.push({
+
         subject: subject,
+
         hours: hours,
+
         completed: false
+
     });
 
     localStorage.setItem(
@@ -335,6 +447,7 @@ function addPlan() {
     displayPlans();
 }
 
+
 // =========================
 // DELETE STUDY PLAN
 // =========================
@@ -345,6 +458,13 @@ function deletePlan(index) {
         JSON.parse(
             localStorage.getItem("studyPlans")
         ) || [];
+
+    if (
+        index < 0 ||
+        index >= plans.length
+    ) {
+        return;
+    }
 
     plans.splice(index, 1);
 
@@ -361,8 +481,11 @@ function deletePlan(index) {
 // STUDY TIMER
 // =========================
 
-let timeLeft = 25 * 60;
-let timerInterval = null;
+let timeLeft =
+    25 * 60;
+
+let timerInterval =
+    null;
 
 
 function updateTimer() {
@@ -370,7 +493,9 @@ function updateTimer() {
     const timeElement =
         document.getElementById("time");
 
-    if (!timeElement) return;
+    if (!timeElement) {
+        return;
+    }
 
     const minutes =
         Math.floor(timeLeft / 60);
@@ -402,7 +527,9 @@ function startTimer() {
 
             } else {
 
-                clearInterval(timerInterval);
+                clearInterval(
+                    timerInterval
+                );
 
                 timerInterval = null;
 
@@ -417,7 +544,9 @@ function startTimer() {
 
 function pauseTimer() {
 
-    clearInterval(timerInterval);
+    clearInterval(
+        timerInterval
+    );
 
     timerInterval = null;
 }
@@ -425,11 +554,14 @@ function pauseTimer() {
 
 function resetTimer() {
 
-    clearInterval(timerInterval);
+    clearInterval(
+        timerInterval
+    );
 
     timerInterval = null;
 
-    timeLeft = 25 * 60;
+    timeLeft =
+        25 * 60;
 
     updateTimer();
 }
@@ -446,6 +578,10 @@ function saveNote() {
 
     const status =
         document.getElementById("noteStatus");
+
+    if (!noteText || !status) {
+        return;
+    }
 
     const note =
         noteText.value.trim();
@@ -483,66 +619,101 @@ function toggleTheme() {
             "themeToggle"
         );
 
-    if (
+    const isDark =
         document.body.classList.contains(
             "dark-mode"
-        )
-    ) {
-
-        button.textContent =
-            "☀️ Light Mode";
-
-        localStorage.setItem(
-            "darkMode",
-            "on"
         );
 
-    } else {
+    if (button) {
 
         button.textContent =
-            "🌙 Dark Mode";
-
-        localStorage.setItem(
-            "darkMode",
-            "off"
-        );
+            isDark
+                ? "☀️ Light Mode"
+                : "🌙 Dark Mode";
     }
+
+    localStorage.setItem(
+        "darkMode",
+        isDark ? "on" : "off"
+    );
 }
+
+
 // =========================
 // FEEDBACK
 // =========================
 
 function sendFeedback() {
 
-    const name =
-        document.getElementById("feedbackName").value.trim();
+    const nameInput =
+        document.getElementById(
+            "feedbackName"
+        );
 
-    const feedback =
-        document.getElementById("feedbackText").value.trim();
+    const feedbackInput =
+        document.getElementById(
+            "feedbackText"
+        );
 
     const status =
-        document.getElementById("feedbackStatus");
+        document.getElementById(
+            "feedbackStatus"
+        );
 
-    if (!name || !feedback) {
-        status.innerText =
-            "Please enter your name and feedback.";
+    if (
+        !nameInput ||
+        !feedbackInput ||
+        !status
+    ) {
         return;
     }
 
+    const name =
+        nameInput.value.trim();
+
+    const feedback =
+        feedbackInput.value.trim();
+
+    if (!name || !feedback) {
+
+        status.innerText =
+            "Please enter your name and feedback.";
+
+        return;
+    }
+
+    // Save locally in browser
+
+    const feedbackList =
+        JSON.parse(
+            localStorage.getItem(
+                "studentFeedbackList"
+            )
+        ) || [];
+
+    feedbackList.push({
+
+        name: name,
+
+        feedback: feedback,
+
+        date:
+            new Date().toLocaleString()
+
+    });
+
     localStorage.setItem(
-        "studentFeedback",
-        JSON.stringify({
-            name: name,
-            feedback: feedback
-        })
+        "studentFeedbackList",
+        JSON.stringify(feedbackList)
     );
 
     status.innerText =
         "Thank you for your feedback! ✅";
 
-    document.getElementById("feedbackName").value = "";
-    document.getElementById("feedbackText").value = "";
+    nameInput.value = "";
+    feedbackInput.value = "";
 }
+
 
 // =========================
 // PAGE START
@@ -552,7 +723,12 @@ document.addEventListener(
     "DOMContentLoaded",
     function () {
 
+        // Timer
+
         updateTimer();
+
+
+        // Study Planner
 
         displayPlans();
 
@@ -564,15 +740,22 @@ document.addEventListener(
                 "studentUtilityNote"
             );
 
-        if (savedNote) {
-
+        const noteText =
             document.getElementById(
                 "noteText"
-            ).value = savedNote;
+            );
+
+        if (
+            savedNote &&
+            noteText
+        ) {
+
+            noteText.value =
+                savedNote;
         }
 
 
-        // Load Dark Mode
+        // Load dark mode
 
         if (
             localStorage.getItem(
@@ -598,18 +781,3 @@ document.addEventListener(
 
     }
 );
-function sendFeedback() {
-    const name = document.getElementById("feedbackName").value.trim();
-    const feedback = document.getElementById("feedbackText").value.trim();
-    const status = document.getElementById("feedbackStatus");
-
-    if (!name || !feedback) {
-        status.innerText = "Please enter your name and feedback.";
-        return;
-    }
-
-    status.innerText = "Thank you for your feedback! ✅";
-
-    document.getElementById("feedbackName").value = "";
-    document.getElementById("feedbackText").value = "";
-}
